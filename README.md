@@ -1,8 +1,8 @@
-# CMS Machine Learning Hands-on Advanced Tutorial Session (HATS)
+# CMS Machine Learning Data Analsyis School (DAS) Short Exercise
 
 ## Introduction
 
-This is a set of tutorials for the CMS Machine Learning Hands-on Advanced Tutorial Session (HATS). They are intended to show you how to build machine learning models in python (`Keras`/`TensorFlow`) and use them in your `ROOT`-based analyses. We will build event-level classifiers for differentiating VBF Higgs and standard model background 4 muon events and jet-level classifiers for differentiating boosted W boson jets from QCD jets.
+This is a set of tutorials for the CMS Machine Learning Data Analysis School (DAS) Short Exercise. They are intended to show you how to build machine learning models in python (`Keras`/`TensorFlow`) and use them in your `ROOT`-based analyses. We will build event-level classifiers for differentiating VBF Higgs and standard model background 4 muon events and jet-level classifiers for differentiating boosted W boson jets from QCD jets.
 
 ## Main notebooks in this tutorial
 
@@ -36,13 +36,13 @@ Now you should see the JupyterHub home directory. Click on "New" then "Terminal"
 To download the tutorials, type
 
 ```
-git clone https://github.com/FNALLPC/machine-learning-hats
+git clone https://github.com/FNALLPC/machine-learning-das
 ```
 
-Now, in your directory tab, there should be a new directory called `machine-learning-hats`. All of the tutorials and exercises are in there.
+Now, in your directory tab, there should be a new directory called `machine-learning-das`. All of the tutorials and exercises are in there.
 
 ## Links
 
-The indico page is: [https://indico.cern.ch/event/726984/](https://indico.cern.ch/event/726984/)
+The indico page is: [https://indico.cern.ch/e/cmsdas2019](https://indico.cern.ch/e/cmsdas2019)
 
-The Mattermost for live support is: https://mattermost.web.cern.ch/cms-exp/channels/machine-learning-hats
+The Mattermost for live support is: ???
