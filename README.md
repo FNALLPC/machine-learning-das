@@ -25,12 +25,12 @@ If this is the first time using this JupyterHub, you should see:
   <img src="vanderbilt.png" width="500"/>
 </p>
 
-Click the "Sign in with CILogon" button. On the following page, select CERN as your identity provider and click the "Log On" button. Then, enter your CERN credentials or use your CERN grid certificate to autheticate.
+Click the "Sign in with Jupyter ACCRE" button. On the following page, select CERN as your identity provider and click the "Log On" button. Then, enter your CERN credentials or use your CERN grid certificate to autheticate. Click "Spawn" to start a "Default ACCRE Image v2" image.
 
-Now you should see the JupyterHub home directory. Click on "New" then "Terminal" in the top right to launch a new terminal.
+Now you should see the JupyterHub home directory. Click on "New" then "Terminal" in the top right to launch a new terminal. Start by clicking on [`0-setup-libraries.ipynb`](0-setup-libraries.ipynb) and running it.
 
 <p align="center">
-  <img src="new_terminal.png" width="200"/>
+  <img src="new_terminal.png" width="500"/>
 </p>
 
 To download the tutorials, type
@@ -45,4 +45,6 @@ Now, in your directory tab, there should be a new directory called `machine-lear
 
 The indico page is: [https://indico.cern.ch/e/cmsdas2019](https://indico.cern.ch/e/cmsdas2019)
 
-The Mattermost for live support is: ???
+The Mattermost for live support is: [https://mattermost.web.cern.ch/cmsdaslpc2019/channels/shortexerciseml](https://mattermost.web.cern.ch/cmsdaslpc2019/channels/shortexerciseml)
+
+The twiki is: [https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolLPC2019MachineLearning](https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolLPC2019MachineLearning)
