@@ -25,7 +25,7 @@ If this is the first time using this JupyterHub, you should see:
   <img src="vanderbilt.png" width="500"/>
 </p>
 
-Click the "Sign in with CILogon" button. On the following page, select CERN as your identity provider and click the "Log On" button. Then, enteri your CERN credentials or use your CERN grid certificate to autheticate.
+Click the "Sign in with CILogon" button. On the following page, select CERN as your identity provider and click the "Log On" button. Then, enter your CERN credentials or use your CERN grid certificate to autheticate.
 
 Now you should see the JupyterHub home directory. Click on "New" then "Terminal" in the top right to launch a new terminal.
 
