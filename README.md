@@ -30,7 +30,7 @@ Click the "Sign in with Jupyter ACCRE" button. On the following page, select CER
 Now you should see the JupyterHub home directory. Click on "New" then "Terminal" in the top right to launch a new terminal. Start by clicking on [`0-setup-libraries.ipynb`](0-setup-libraries.ipynb) and running it.
 
 <p align="center">
-  <img src="new_terminal.png" width="500"/>
+  <img src="new_terminal.png" width="200"/>
 </p>
 
 To download the tutorials, type
