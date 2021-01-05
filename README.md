@@ -25,7 +25,7 @@ If this is the first time using this JupyterHub, you should see:
   <img src="vanderbilt.png" width="500"/>
 </p>
 
-Click the "Sign in with Jupyter ACCRE" button. On the following page, select CERN as your identity provider and click the "Log On" button. Then, enter your CERN credentials or use your CERN grid certificate to autheticate. Click "Spawn" to start a "Default ACCRE Image v2" image.
+Click the "Sign in with Jupyter ACCRE" button. On the following page, select CERN as your identity provider and click the "Log On" button. Then, enter your CERN credentials or use your CERN grid certificate to autheticate. Select a "Default ACCRE Image v5" image and then select either 1 core/2 GB or memory or 8 cores/8GB memory. Unless you are unable to spawn a server, we recommend using the 8 core/8GB memory servers as notebooks *4* and *5* require a lot of memory. Once you've selected the appropriate options, click "Spawn".
 
 Now you should see the JupyterHub home directory. Click on "New" then "Terminal" in the top right to launch a new terminal. 
 
