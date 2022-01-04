@@ -43,8 +43,8 @@ Now, in your directory tab, there should be a new directory called `machine-lear
 
 ## Links
 
-The indico page is: [https://indico.cern.ch/e/cmsdas2021](https://indico.cern.ch/e/cmsdas2021)
+The indico page is: [https://indico.cern.ch/e/cmsdas2022](https://indico.cern.ch/e/cmsdas2022)
 
-The Mattermost for live support is: [https://mattermost.web.cern.ch/cmsdaslpc2021/channels/shortexercisemachinelearning](https://mattermost.web.cern.ch/cmsdaslpc2021/channels/shortexercisemachinelearning)
+The Mattermost for live support is: [https://mattermost.web.cern.ch/cmsdaslpc2022/channels/shortexml](https://mattermost.web.cern.ch/cmsdaslpc2022/channels/shortexml)
 
-The twiki is: [https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolLPC2021MachineLearningShortExercise](https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolLPC2021MachineLearningShortExercise)
+The twiki is: [https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolLPC2022MachineLearningShortExercise](https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolLPC2022MachineLearningShortExercise)
