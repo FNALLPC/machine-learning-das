@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Graph Neural Network (GNN) with PyTorch Geometric &#8212; Machine Learning Short Exercise</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/4-gnn-cora';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Variational Autoencoders with Keras and MNIST" href="5-vae-mnist.html" />
+    <link rel="prev" title="3. Convolutional Neural Networks for Jet-Images" href="3-conv2d.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Machine Learning Short Exercise</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    CMS Machine Learning Data Analysis School (DAS) Short Exercise
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setup/vanderbilt-jupyterhub/vanderbilt.html">Vanderbilt JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/lpc.html">LPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup-libraries.html">Setup Libraries</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1-datasets-uproot.html">1. Loading Datasets</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="2-dense.html">2. Dense networks</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.1-dense-keras.html">2.1. Dense neural network with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.2-dense-pytorch.html">2.2. Dense neural network with PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.3-dense-bayesian-optimization.html">2.3. Optimize a dense network with Bayesian optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3-conv2d.html">3. Convolutional Neural Networks for Jet-Images</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Graph Neural Network (GNN) with PyTorch Geometric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-vae-mnist.html">5. Variational Autoencoders with Keras and MNIST</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="6-gan-mnist.html">7. Generative Adversarial Networks with Keras and MNIST</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/FNALLPC/machine-learning-das/master?urlpath=tree/machine-learning-das/notebooks/4-gnn-cora.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/FNALLPC/machine-learning-das/blob/master/machine-learning-das/notebooks/4-gnn-cora.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FNALLPC/machine-learning-das" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FNALLPC/machine-learning-das/issues/new?title=Issue%20on%20page%20%2Fnotebooks/4-gnn-cora.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/4-gnn-cora.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Graph Neural Network (GNN) with PyTorch Geometric</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.1. Code!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-import-libraries-and-load-cora-dataset">4.2. Step 2: Import Libraries and Load Cora Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-define-the-gnn-model">4.3. Step 3: Define the GNN Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-training-and-evaluation">4.4. Step 4: Training and Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-plotting-loss-and-accuracy">4.5. Step 5: Plotting Loss and Accuracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.6. Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="graph-neural-network-gnn-with-pytorch-geometric">
+<h1><span class="section-number">4. </span>Graph Neural Network (GNN) with PyTorch Geometric<a class="headerlink" href="#graph-neural-network-gnn-with-pytorch-geometric" title="Permalink to this heading">#</a></h1>
+<p>The contents of this tutorial are heavily adapted from a similar one make by <a class="reference external" href="https://github.com/savvy379">Savannah Thais</a> using tensorflow and keras.</p>
+<p>A graph <span class="math notranslate nohighlight">\(G=(N,E)\)</span>, comprising of nodes <span class="math notranslate nohighlight">\(N\)</span> and edges <span class="math notranslate nohighlight">\(E\)</span>, is a versatile mathematical structure that can represent various data such as molecules, social networks, transportation systems, etc. Nodes and edges may have associated features like geometric or non-geometric information. Graphs can be directed or undirected, and GNNs, with their ability to handle graphs of varying shapes and sizes, are well-suited for diverse applications including High Energy Physics (HEP).</p>
+<p><img alt="" src="../_images/toy_graph.png" /></p>
+<p>GNNs, particularly Graph Convolutional Networks (GCNs), re-embed graph edges and nodes by applying convolution operations to node neighborhoods, unlike the fixed data tensors used in conventional CNNs. This process, termed as “Message Passing,” constructs messages by combining information from neighboring nodes, then passes them to target nodes to update features. The entire graph is thus transformed, incorporating valuable information within each node. The convolved graph is often further processed for classification or regression on individual elements or the entire graph. This structure can also be applied to update edge features.</p>
+<p><img alt="" src="../_images/message_passing.png" /></p>
+<p><img alt="" src="../_images/graph_eq.png" /></p>
+<ul class="simple">
+<li><p>Initial Embedding: Each node <span class="math notranslate nohighlight">\(v\)</span> starts with an initial embedding <span class="math notranslate nohighlight">\(h_v^0\)</span>, representing the original node features.</p></li>
+<li><p>Neighbors: For each node <span class="math notranslate nohighlight">\(v\)</span>, the neighboring nodes are represented as <span class="math notranslate nohighlight">\(N(v)\)</span>.</p></li>
+<li><p>Message Construction: To update the embedding of node <span class="math notranslate nohighlight">\(v\)</span>, <span class="math notranslate nohighlight">\(h_v^k\)</span>, a ‘message’ is constructed through the following steps:</p>
+<ol class="arabic simple">
+<li><p><strong>Calculate Average of Neighbors’ Embeddings</strong>: Take the average over the current embedding of all neighboring nodes: <span class="math notranslate nohighlight">\(\sum_{u \in N(v)}\frac{h_u^{k-1}}{\text{deg}(v)}\)</span>.</p></li>
+<li><p><strong>Optional Target Node Embedding</strong>: Optionally include the current embedding of the target node: <span class="math notranslate nohighlight">\(h_v^{k-1}\)</span>.</p></li>
+<li><p><strong>Apply Function</strong>: Use a function <span class="math notranslate nohighlight">\(f\)</span> to combine the above information. In practice, <span class="math notranslate nohighlight">\(f\)</span> is approximated by a matrix (convolution) <span class="math notranslate nohighlight">\(W^k\)</span>.</p></li>
+<li><p><strong>Non-linear Activation</strong>: Pass the result through a non-linear activation function to update the target node.</p></li>
+</ol>
+</li>
+<li><p>Result: The entire process transforms the graph, updating the node and possibly edge features to include additional useful information. The final embeddings can then be used for further analysis like classification or regression on the graph’s elements or structure.</p></li>
+</ul>
+<section id="code">
+<h2><span class="section-number">4.1. </span>Code!<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
+<p>In this tutorial, we will implement a Graph Neural Network (GNN) using PyTorch Geometric. We’ll perform node classification on the Cora dataset, which consists of scientific publications as nodes and citation links as edges.</p>
+<p>The steps in this tutorial include:</p>
+<ol class="arabic simple">
+<li><p>Installing PyTorch Geometric</p></li>
+<li><p>Loading the Cora dataset</p></li>
+<li><p>Defining the GNN model</p></li>
+<li><p>Training and evaluating the model</p></li>
+<li><p>Plotting the training loss and test accuracy</p></li>
+</ol>
+<p>Let’s get started!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: Install PyTorch Geometric</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>torch_geometric
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>torchviz
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: torch_geometric in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (2.3.1)
+Requirement already satisfied: tqdm in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch_geometric) (4.65.0)
+Requirement already satisfied: numpy in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch_geometric) (1.25.1)
+Requirement already satisfied: scipy in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch_geometric) (1.11.1)
+Requirement already satisfied: jinja2 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch_geometric) (3.1.2)
+Requirement already satisfied: requests in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch_geometric) (2.31.0)
+Requirement already satisfied: pyparsing in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch_geometric) (3.0.4)
+Requirement already satisfied: scikit-learn in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch_geometric) (1.3.0)
+Requirement already satisfied: psutil&gt;=5.8.0 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch_geometric) (5.9.5)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from jinja2-&gt;torch_geometric) (2.1.3)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from requests-&gt;torch_geometric) (3.2.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from requests-&gt;torch_geometric) (3.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from requests-&gt;torch_geometric) (2.0.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from requests-&gt;torch_geometric) (2023.5.7)
+Requirement already satisfied: joblib&gt;=1.1.1 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from scikit-learn-&gt;torch_geometric) (1.3.1)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from scikit-learn-&gt;torch_geometric) (3.2.0)
+Collecting torchviz
+  Downloading torchviz-0.0.2.tar.gz (4.9 kB)
+  Preparing metadata (setup.py) ... ?25ldone
+?25hRequirement already satisfied: torch in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torchviz) (2.0.1)
+Collecting graphviz (from torchviz)
+  Downloading graphviz-0.20.1-py3-none-any.whl (47 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">47.0/47.0 kB</span> <span class=" -Color -Color-Red">858.8 kB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>a <span class=" -Color -Color-Cyan">0:00:01</span>
+?25hRequirement already satisfied: filelock in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch-&gt;torchviz) (3.12.2)
+Requirement already satisfied: typing-extensions in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch-&gt;torchviz) (4.7.1)
+Requirement already satisfied: sympy in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch-&gt;torchviz) (1.12)
+Requirement already satisfied: networkx in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch-&gt;torchviz) (3.1)
+Requirement already satisfied: jinja2 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from torch-&gt;torchviz) (3.1.2)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from jinja2-&gt;torch-&gt;torchviz) (2.1.3)
+Requirement already satisfied: mpmath&gt;=0.19 in /uscms/home/aaportel/nobackup/mamba/envs/ml/lib/python3.11/site-packages (from sympy-&gt;torch-&gt;torchviz) (1.3.0)
+Building wheels for collected packages: torchviz
+  Building wheel for torchviz (setup.py) ... ?25ldone
+?25h  Created wheel for torchviz: filename=torchviz-0.0.2-py3-none-any.whl size=4131 sha256=3593429a9b86799f5b41f3251aeb3d1d55045ea88a70f3ac8410df2eb6c59242
+  Stored in directory: /uscms/homes/a/aaportel/.cache/pip/wheels/5a/d0/3f/b7014553eb74f12892b7d9b69c6083044564712d10fde8dfdc
+Successfully built torchviz
+Installing collected packages: graphviz, torchviz
+Successfully installed graphviz-0.20.1 torchviz-0.0.2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-import-libraries-and-load-cora-dataset">
+<h2><span class="section-number">4.2. </span>Step 2: Import Libraries and Load Cora Dataset<a class="headerlink" href="#step-2-import-libraries-and-load-cora-dataset" title="Permalink to this heading">#</a></h2>
+<p>We’ll start by importing the necessary libraries and loading the Cora dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">torch_geometric.nn</span> <span class="kn">import</span> <span class="n">GCNConv</span>
+<span class="kn">from</span> <span class="nn">torch_geometric.data</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">torch_geometric.datasets</span> <span class="kn">import</span> <span class="n">Planetoid</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://paperswithcode.com/dataset/cora">The Cora dataset</a> consists of <strong>2708 scientific publications</strong> classified into one of <strong>seven classes</strong>. The citation network consists of <strong>5429 links</strong>. Each publication in the dataset is described by a <strong>0/1-valued word vector</strong> indicating the absence/presence of the corresponding word from the dictionary. The dictionary consists of <strong>1433 unique words</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load Cora dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Planetoid</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s2">&quot;/tmp/Cora&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Cora&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.x
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.tx
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.allx
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.y
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.ty
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.ally
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.graph
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.test.index
+Processing...
+Done!
+</pre></div>
+</div>
+</div>
+</div>
+<p>PyTorch Geometric has this nifty class called <code class="docutils literal notranslate"><span class="pre">Data</span></code> which is used to standardize graph data. You can make your own, but since the sample datasets are already in this format, we won’t go over how to make them here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data(x=[2708, 1433], edge_index=[2, 10556], y=[2708], train_mask=[2708], val_mask=[2708], test_mask=[2708])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;node vectors: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;node classes:  </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;edge indeces: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">edge_index</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;train_mask: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">train_mask</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;val_mask: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">val_mask</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_mask: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">test_mask</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>node vectors: 
+ tensor([[0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.],
+        [0., 0., 0.,  ..., 0., 0., 0.]]) 
+
+node classes:  
+ tensor([3, 4, 4,  ..., 3, 3, 3]) 
+
+edge indeces: 
+ tensor([[   0,    0,    0,  ..., 2707, 2707, 2707],
+        [ 633, 1862, 2582,  ...,  598, 1473, 2706]]) 
+
+
+
+train_mask: 
+ tensor([ True,  True,  True,  ..., False, False, False]) 
+
+val_mask: 
+ tensor([False, False, False,  ..., False, False, False]) 
+
+test_mask: 
+ tensor([False, False, False,  ...,  True,  True,  True]) 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also visualize the dataset using <code class="docutils literal notranslate"><span class="pre">networkx</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Convert to networkx graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">edge_index</span><span class="p">):</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">j</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+<span class="c1"># Draw a subset of the graph (e.g., first 300 nodes)</span>
+<span class="n">subset_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)[:</span><span class="mi">300</span><span class="p">]</span>
+<span class="n">subset_graph</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">subset_nodes</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">subset_graph</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Visualization of a Subset of the Cora Graph&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a9a82aac7c24b7667aa4169603d2ab7a88272be59f6cfd5d31ca9010a2ea5996.png" src="../_images/a9a82aac7c24b7667aa4169603d2ab7a88272be59f6cfd5d31ca9010a2ea5996.png" />
+</div>
+</div>
+</section>
+<section id="step-3-define-the-gnn-model">
+<h2><span class="section-number">4.3. </span>Step 3: Define the GNN Model<a class="headerlink" href="#step-3-define-the-gnn-model" title="Permalink to this heading">#</a></h2>
+<p>Next, we’ll define the GNN model, consisting of two GCN convolution layers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define GNN model</span>
+<span class="k">class</span> <span class="nc">GNN</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_channels</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GNN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">GCNConv</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">num_node_features</span><span class="p">,</span> <span class="n">hidden_channels</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">GCNConv</span><span class="p">(</span><span class="n">hidden_channels</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">num_classes</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">relu</span><span class="p">()</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-training-and-evaluation">
+<h2><span class="section-number">4.4. </span>Step 4: Training and Evaluation<a class="headerlink" href="#step-4-training-and-evaluation" title="Permalink to this heading">#</a></h2>
+<p>Now, we’ll train the GNN model and evaluate its performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training and evaluation</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GNN</span><span class="p">(</span><span class="n">hidden_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">5e-4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="c1"># Lists to store loss and accuracy over time</span>
+<span class="n">train_loss_history</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_accuracy_history</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">train</span><span class="p">():</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">edge_index</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">train_mask</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">train_mask</span><span class="p">])</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">edge_index</span><span class="p">)</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">test_mask</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">test_mask</span><span class="p">]</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">correct</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">test_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">acc</span>
+
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">):</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">train</span><span class="p">()</span>
+    <span class="n">train_loss_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">test</span><span class="p">()</span>
+    <span class="n">test_accuracy_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">, Loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test Accuracy:&quot;</span><span class="p">,</span> <span class="n">test</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 000, Loss: 1.9487, Accuracy: 0.5430
+Epoch: 010, Loss: 0.5831, Accuracy: 0.7720
+Epoch: 020, Loss: 0.1152, Accuracy: 0.7910
+Epoch: 030, Loss: 0.0307, Accuracy: 0.7810
+Epoch: 040, Loss: 0.0135, Accuracy: 0.7890
+Epoch: 050, Loss: 0.0162, Accuracy: 0.7860
+Epoch: 060, Loss: 0.0153, Accuracy: 0.7900
+Epoch: 070, Loss: 0.0202, Accuracy: 0.7940
+Epoch: 080, Loss: 0.0180, Accuracy: 0.7970
+Epoch: 090, Loss: 0.0184, Accuracy: 0.7970
+Epoch: 100, Loss: 0.0168, Accuracy: 0.7960
+Epoch: 110, Loss: 0.0176, Accuracy: 0.8010
+Epoch: 120, Loss: 0.0160, Accuracy: 0.7990
+Epoch: 130, Loss: 0.0154, Accuracy: 0.8000
+Epoch: 140, Loss: 0.0150, Accuracy: 0.8040
+Epoch: 150, Loss: 0.0125, Accuracy: 0.8050
+Epoch: 160, Loss: 0.0141, Accuracy: 0.8020
+Epoch: 170, Loss: 0.0121, Accuracy: 0.8080
+Epoch: 180, Loss: 0.0136, Accuracy: 0.7990
+Epoch: 190, Loss: 0.0132, Accuracy: 0.8070
+Epoch: 200, Loss: 0.0102, Accuracy: 0.8030
+Epoch: 210, Loss: 0.0115, Accuracy: 0.7990
+Epoch: 220, Loss: 0.0117, Accuracy: 0.8060
+Epoch: 230, Loss: 0.0118, Accuracy: 0.8010
+Epoch: 240, Loss: 0.0101, Accuracy: 0.8080
+Epoch: 250, Loss: 0.0093, Accuracy: 0.8070
+Epoch: 260, Loss: 0.0120, Accuracy: 0.8070
+Epoch: 270, Loss: 0.0093, Accuracy: 0.8080
+Epoch: 280, Loss: 0.0114, Accuracy: 0.8030
+Epoch: 290, Loss: 0.0094, Accuracy: 0.8050
+Test Accuracy: 0.806
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-5-plotting-loss-and-accuracy">
+<h2><span class="section-number">4.5. </span>Step 5: Plotting Loss and Accuracy<a class="headerlink" href="#step-5-plotting-loss-and-accuracy" title="Permalink to this heading">#</a></h2>
+<p>Finally, we’ll visualize the training loss and test accuracy using Matplotlib.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting loss and accuracy</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_loss_history</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Epochs&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Loss&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Training Loss&quot;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_accuracy_history</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Epochs&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Test Accuracy&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/54c21e50a2bbbb7dfd9c83c41ccdb639f3d14b05fb0a3e2b5975bb8022abd87f.png" src="../_images/54c21e50a2bbbb7dfd9c83c41ccdb639f3d14b05fb0a3e2b5975bb8022abd87f.png" />
+</div>
+</div>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">4.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>In this tutorial, we implemented a GNN model to classify scientific publications in the Cora dataset. We trained the model and visualized the training progress. Experiment with different hyperparameters and architectures to see how the performance changes!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3-conv2d.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Convolutional Neural Networks for Jet-Images</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="5-vae-mnist.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Variational Autoencoders with Keras and MNIST</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">4.1. Code!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-import-libraries-and-load-cora-dataset">4.2. Step 2: Import Libraries and Load Cora Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-define-the-gnn-model">4.3. Step 3: Define the GNN Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-training-and-evaluation">4.4. Step 4: Training and Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-plotting-loss-and-accuracy">4.5. Step 5: Plotting Loss and Accuracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.6. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Raghav Kansal, on behalf of the LPC
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
