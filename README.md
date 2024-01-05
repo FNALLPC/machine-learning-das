@@ -1,50 +1,91 @@
+![logo](logo.png)
+
+______________________________________________________________________
+
+<p align="center">
+  <a href="#introduction">Introduction</a> •
+  <a href="#setup">Setup</a> •
+  <a href="#links">Links</a> •
+  <a href="#credits">Credits</a>
+</p>
+
+______________________________________________________________________
+
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://FNALLPC.github.io/machine-learning-hats)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/FNALLPC/machine-learning-hats/HEAD)
+[![Codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/FNALLPC/machine-learning-hats/master.svg)](https://results.pre-commit.ci/latest/github/FNALLPC/machine-learning-hats/master)
+
+______________________________________________________________________
+
+
 # CMS Machine Learning Data Analsyis School (DAS) Short Exercise
+
 
 ## Introduction
 
-This is a set of tutorials for the CMS Machine Learning Data Analysis School (DAS) Short Exercise. They are intended to show you how to build machine learning models in python (`Keras`/`TensorFlow`) and use them in your `ROOT`-based analyses. We will build event-level classifiers for differentiating VBF Higgs and standard model background 4 muon events and jet-level classifiers for differentiating boosted W boson jets from QCD jets.
-
-## Main notebooks in this tutorial
-
- 0. [`0-setup-libraries.ipynb`](0-setup-libraries.ipynb): setting up libraries using `CMSSW`
- 1. [`1.1-datasets-uproot.ipynb`](1-datasets.ipynb): reading/writing datasets from `ROOT` files with `uproot`
- 2. [`2-plotting.ipynb`](2-plotting.ipynb): plotting with `pyROOT` and `matplotlib`
- 3. [`3-dense.ipynb`](3-dense.ipynb): building, training, and evaluating a fully connected (dense) neural network in `Keras`
- 4. [`4-preprocessing.ipynb`](4-preprocessing.ipynb): preprocessing CMS open data to build jet-images (optional)
- 5. [`5-conv2d.ipynb`](5-conv2d.ipynb): building, training, and evaluating a 2D convolutional neural network in `Keras`
+This is a set of tutorials for the CMS Machine Learning Hands-on Advanced Tutorial Session (HATS). 
+They are intended to show you how to build machine learning models in python, using `Keras`, `TensorFlow`, and `PyTorch`, and use them in your `ROOT`-based analyses. 
+We will build event-level classifiers for differentiating VBF Higgs and standard model background 4 muon events and jet-level classifiers for differentiating boosted W boson jets from QCD jets using dense and convolutional neural networks.
+We will also explore more advanced models such as graph neural networks (GNNs), variational autoencoders (VAEs), and generative adversarial networks (GANs) on simple datasets.
 
 ## Setup
 
-We will be using the Vanderbilt JupyterHub. Point your browser to:
+### Vanderbilt Jupyterhub (Recommended!)
 
-[https://jupyter.accre.vanderbilt.edu/](https://jupyter.accre.vanderbilt.edu/)
+The recommended method for running the tutorials live is the Vanderbilt Jupyterhub, follow the instructions [here](https://fnallpc.github.io/machine-learning-hats/setup/vanderbilt-jupyterhub/vanderbilt.html).
 
-If this is the first time using this JupyterHub, you should see:
+### FNAL LPC
 
-<p align="center">
-  <img src="vanderbilt.png" width="500"/>
-</p>
+Not as well supported, but instructions are [here](https://fnallpc.github.io/machine-learning-hats/setup/lpc.html).
 
-Click the "Sign in with Jupyter ACCRE" button. On the following page, select CERN as your identity provider and click the "Log On" button. Then, enter your CERN credentials or use your CERN grid certificate to autheticate. Select a "Default ACCRE Image v5" image and then select either 1 core/2 GB or memory or 8 cores/8GB memory. Unless you are unable to spawn a server, we recommend using the 8 core/8GB memory servers as notebooks *4* and *5* require a lot of memory. Once you've selected the appropriate options, click "Spawn".
+### Locally
 
-Now you should see the JupyterHub home directory. Click on "New" then "Terminal" in the top right to launch a new terminal. 
+All these notebooks can be run on your local machine as well. 
+It can often be useful to test your models and pipelines locally, but it is not recommended to run full trainings as these can be resource-intensive.
 
-<p align="center">
-  <img src="new_terminal.png" width="200"/>
-</p>
+To run locally, run these commands from your terminal:
 
-To download the tutorials, type
+```bash
+# Download the setup bash file for your machine from here https://github.com/conda-forge/miniforge#mambaforge
+# e.g. wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+# Install: (the mamba directory can end up taking O(1-10GB) so make sure the directory you're using allows that quota)
+chmod u+x Mambaforge-Linux-x86_64.sh
+./Mambaforge-Linux-x86_64.sh  # follow instructions in the installation
 
+git clone https://github.com/FNALLPC/machine-learning-hats/
+cd machine-learning-hats
+mamba create -f environment.yml
+mamba activate machine-learning-hats
+jupyter lab  # this will create a JupyterLab instance from which you can run all the notebooks.
 ```
-git clone https://github.com/FNALLPC/machine-learning-das
-```
 
-Now, in your directory tab, there should be a new directory called `machine-learning-das`. All of the tutorials and exercises are in there. Start by clicking on [`0-setup-libraries.ipynb`](0-setup-libraries.ipynb) and running it.
+### Binder
+
+You can launch this repository in a "Binder" instance using: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/FNALLPC/machine-learning-hats/HEAD),
+or for a specific notebook by navigating to the rocket icon on the website and clicking on the Binder option.
+
+![launch_notebooks](figures/launch_notebooks.png)
+
+This may be a more convenient, but it has not been well tested and the set-up time can be slow.
+
+## Setup
+
+### Google Colab
+
+Each notebook can also be launched in a Google Colab instance by clicking "Google Colab" option in the menu bar above. 
+To use this, you will have to install any extra libraries needed for the tutorial yourself and re-download the relevant datasets each time.
+
 
 ## Links
 
-The indico page is: [https://indico.cern.ch/e/cmsdas2022](https://indico.cern.ch/e/cmsdas2022)
+The indico page is: [https://indico.cern.ch/event/1311559/](https://indico.cern.ch/event/1311559/)
 
-The Mattermost for live support is: [https://mattermost.web.cern.ch/cmsdaslpc2022/channels/shortexml](https://mattermost.web.cern.ch/cmsdaslpc2022/channels/shortexml)
+The Mattermost for live support is: [https://mattermost.web.cern.ch/cms-exp/channels/hatslpc-2023](https://mattermost.web.cern.ch/cms-exp/channels/hatslpc-2023)
 
-The twiki is: [https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolLPC2022MachineLearningShortExercise](https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolLPC2022MachineLearningShortExercise)
+The datasets we will use are located here: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3901869.svg)](https://doi.org/10.5281/zenodo.3901869)
+
+
+## Credits
+
+This project is created using the excellent open source [Jupyter Book project](https://jupyterbook.org/) and the [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
