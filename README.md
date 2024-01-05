@@ -79,7 +79,7 @@ To use this, you will have to install any extra libraries needed for the tutoria
 
 ## Links
 
-The indico page is: [https://indico.cern.ch/event/1311559/](https://indico.cern.ch/event/1311559/)
+The indico page for the DAS is: https://indico.cern.ch/e/cmsdas2024
 
 The Mattermost for live support is: [https://mattermost.web.cern.ch/cmsdaslpc2024/channels/shortexmachinelearning](https://mattermost.web.cern.ch/cmsdaslpc2024/channels/shortexmachinelearning)
 
