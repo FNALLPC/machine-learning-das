@@ -22,22 +22,22 @@ Now you should see the JupyterHub home directory. Click on "New" then "Terminal"
 To download the tutorials, type
 
 ```
-git clone https://github.com/FNALLPC/machine-learning-hats
+git clone https://github.com/FNALLPC/machine-learning-das
 ```
 
-Now, in your directory tab, there should be a new directory called `machine-learning-hats`. 
-All of the tutorials and exercises are inside `machine-learning-hats/machine-learning-hats`.
+Now, in your directory tab, there should be a new directory called `machine-learning-das`. 
+All of the tutorials and exercises are inside `machine-learning-das/machine-learning-das`.
 
 
 ## 3. Setup libraries
 
-Start by clicking on [`setup-libraries.ipynb`](https://github.com/FNALLPC/machine-learning-hats/blob/master/machine-learning-hats/setup-libraries.ipynb) and running it. 
+Start by clicking on [`setup-libraries.ipynb`](https://github.com/FNALLPC/machine-learning-das/blob/master/machine-learning-das/setup-libraries.ipynb) and running it. 
 
 ```{important}
 Please note that the first cell may take up to 20 minutes to run.
 ```
 
-Now close this notebook by clicking on `File->Close and Halt`. Click the "New" button again. You should see a new kernal called `machine-learning-hats`. 
+Now close this notebook by clicking on `File->Close and Halt`. Click the "New" button again. You should see a new kernal called `machine-learning-das`. 
 If you do not, refresh the page and look again.
 
 ![new_mlhats](new_mlhats_2021.png)

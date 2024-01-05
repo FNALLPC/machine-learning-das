@@ -5,10 +5,10 @@
 
 #######################################################################################
 # Book settings
-title                       : Machine Learning HATS  # The title of the book. Will be placed in the left navbar.
+title                       : Machine Learning Short Exercise  # The title of the book. Will be placed in the left navbar.
 author                      : Raghav Kansal, on behalf of the LPC  # The author of the book
-copyright                   : "2023"  # Copyright year to be placed in the footer
-logo                        : logo.pdf  # A path to the book logo
+copyright                   : "2024"  # Copyright year to be placed in the footer
+logo                        : ""  # A path to the book logo
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -26,8 +26,8 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/FNALLPC/machine-learning-hats  # Online location of your book
-  path_to_book: "machine-learning-hats"  # Optional path to your book, relative to the repository root
+  url: https://github.com/FNALLPC/machine-learning-das  # Online location of your book
+  path_to_book: "machine-learning-das"  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book

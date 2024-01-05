@@ -3,8 +3,8 @@
 *.pyc
 **/.DS_Store
 
-machine-learning-hats/_build
-machine-learning-hats/notebooks/*
-!machine-learning-hats/notebooks/*.ipynb
-!machine-learning-hats/notebooks/*.md
+machine-learning-das/_build
+machine-learning-das/notebooks/*
+!machine-learning-das/notebooks/*.ipynb
+!machine-learning-das/notebooks/*.md
 

@@ -1,4 +1,4 @@
-![logo](logo.png)
+<!-- ![logo](logo.png) -->
 
 ______________________________________________________________________
 
@@ -11,20 +11,20 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://FNALLPC.github.io/machine-learning-hats)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/FNALLPC/machine-learning-hats/HEAD)
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://FNALLPC.github.io/machine-learning-das)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/FNALLPC/machine-learning-das/HEAD)
 [![Codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/FNALLPC/machine-learning-hats/master.svg)](https://results.pre-commit.ci/latest/github/FNALLPC/machine-learning-hats/master)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/FNALLPC/machine-learning-das/master.svg)](https://results.pre-commit.ci/latest/github/FNALLPC/machine-learning-das/master)
 
 ______________________________________________________________________
 
 
-# CMS Machine Learning Data Analsyis School (DAS) Short Exercise
+# CMS Machine Learning Data Analysis School (DAS) Short Exercise
 
 
 ## Introduction
 
-This is a set of tutorials for the CMS Machine Learning Hands-on Advanced Tutorial Session (HATS). 
+This is a set of tutorials for the LPC Data Analysis School (DAS) Machine Learning Short Exercise. 
 They are intended to show you how to build machine learning models in python, using `Keras`, `TensorFlow`, and `PyTorch`, and use them in your `ROOT`-based analyses. 
 We will build event-level classifiers for differentiating VBF Higgs and standard model background 4 muon events and jet-level classifiers for differentiating boosted W boson jets from QCD jets using dense and convolutional neural networks.
 We will also explore more advanced models such as graph neural networks (GNNs), variational autoencoders (VAEs), and generative adversarial networks (GANs) on simple datasets.
@@ -33,11 +33,11 @@ We will also explore more advanced models such as graph neural networks (GNNs), 
 
 ### Vanderbilt Jupyterhub (Recommended!)
 
-The recommended method for running the tutorials live is the Vanderbilt Jupyterhub, follow the instructions [here](https://fnallpc.github.io/machine-learning-hats/setup/vanderbilt-jupyterhub/vanderbilt.html).
+The recommended method for running the tutorials live is the Vanderbilt Jupyterhub, follow the instructions [here](https://fnallpc.github.io/machine-learning-das/setup/vanderbilt-jupyterhub/vanderbilt.html).
 
 ### FNAL LPC
 
-Not as well supported, but instructions are [here](https://fnallpc.github.io/machine-learning-hats/setup/lpc.html).
+Not as well supported, but instructions are [here](https://fnallpc.github.io/machine-learning-das/setup/lpc.html).
 
 ### Locally
 
@@ -53,16 +53,16 @@ To run locally, run these commands from your terminal:
 chmod u+x Mambaforge-Linux-x86_64.sh
 ./Mambaforge-Linux-x86_64.sh  # follow instructions in the installation
 
-git clone https://github.com/FNALLPC/machine-learning-hats/
-cd machine-learning-hats
+git clone https://github.com/FNALLPC/machine-learning-das/
+cd machine-learning-das
 mamba create -f environment.yml
-mamba activate machine-learning-hats
+mamba activate machine-learning-das
 jupyter lab  # this will create a JupyterLab instance from which you can run all the notebooks.
 ```
 
 ### Binder
 
-You can launch this repository in a "Binder" instance using: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/FNALLPC/machine-learning-hats/HEAD),
+You can launch this repository in a "Binder" instance using: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/FNALLPC/machine-learning-das/HEAD),
 or for a specific notebook by navigating to the rocket icon on the website and clicking on the Binder option.
 
 ![launch_notebooks](figures/launch_notebooks.png)
@@ -81,7 +81,7 @@ To use this, you will have to install any extra libraries needed for the tutoria
 
 The indico page is: [https://indico.cern.ch/event/1311559/](https://indico.cern.ch/event/1311559/)
 
-The Mattermost for live support is: [https://mattermost.web.cern.ch/cms-exp/channels/hatslpc-2023](https://mattermost.web.cern.ch/cms-exp/channels/hatslpc-2023)
+The Mattermost for live support is: [https://mattermost.web.cern.ch/cmsdaslpc2024/channels/shortexmachinelearning](https://mattermost.web.cern.ch/cmsdaslpc2024/channels/shortexmachinelearning)
 
 The datasets we will use are located here: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3901869.svg)](https://doi.org/10.5281/zenodo.3901869)
 

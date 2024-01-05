@@ -30,11 +30,11 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build machine-learning-hats
+        jupyter-book build machine-learning-das
 
     # Deploy the book's HTML to gh-pages branch
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: machine-learning-hats/_build/html
+        publish_dir: machine-learning-das/_build/html

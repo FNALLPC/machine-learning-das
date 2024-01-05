@@ -1,4 +1,4 @@
-name: machine-learning-hats
+name: machine-learning-das
 channels:
     - pytorch
     - conda-forge
