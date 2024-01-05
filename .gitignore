@@ -1,0 +1,10 @@
+.ipynb_checkpoints
+*~
+*.pyc
+**/.DS_Store
+
+machine-learning-das/_build
+machine-learning-das/notebooks/*
+!machine-learning-das/notebooks/*.ipynb
+!machine-learning-das/notebooks/*.md
+
