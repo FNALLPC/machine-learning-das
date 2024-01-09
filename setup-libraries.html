@@ -489,7 +489,668 @@ echo &quot;Installed \&quot;$KERNEL_NAME\&quot;!&quot;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Executing transaction: ...working... done
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sourcing the conda and mamba setup scripts...
+Creating the miniconda3 environment &quot;machine-learning-das&quot;...
+Retrieving notices: ...working... done
+
+
+Looking for: [&#39;python==3.10&#39;, &#39;pip&#39;]
+
+
+Transaction
+
+  Prefix: /home/cms.rkansal/mambaforge/envs/machine-learning-das
+
+  Updating specs:
+
+   - python==3.10
+   - pip
+
+
+  Package                Version  Build               Channel                    Size
+───────────────────────────────────────────────────────────────────────────────────────
+  Install:
+───────────────────────────────────────────────────────────────────────────────────────
+
+  + _libgcc_mutex            0.1  conda_forge         conda-forge/linux-64     Cached
+  + _openmp_mutex            4.5  2_gnu               conda-forge/linux-64     Cached
+  + bzip2                  1.0.8  hd590300_5          conda-forge/linux-64      254kB
+  + ca-certificates   2023.11.17  hbcca054_0          conda-forge/linux-64      154kB
+  + ld_impl_linux-64        2.40  h41732ed_0          conda-forge/linux-64     Cached
+  + libffi                 3.4.2  h7f98852_5          conda-forge/linux-64     Cached
+  + libgcc-ng             13.2.0  h807b86a_3          conda-forge/linux-64      774kB
+  + libgomp               13.2.0  h807b86a_3          conda-forge/linux-64      422kB
+  + libnsl                 2.0.1  hd590300_0          conda-forge/linux-64       33kB
+  + libsqlite             3.44.2  h2797004_0          conda-forge/linux-64      846kB
+  + libuuid               2.38.1  h0b41bf4_0          conda-forge/linux-64     Cached
+  + libzlib               1.2.13  hd590300_5          conda-forge/linux-64     Cached
+  + ncurses                  6.4  h59595ed_2          conda-forge/linux-64      884kB
+  + openssl                3.2.0  hd590300_1          conda-forge/linux-64        3MB
+  + pip                   23.3.2  pyhd8ed1ab_0        conda-forge/noarch          1MB
+  + python                3.10.0  h543edf9_3_cpython  conda-forge/linux-64     Cached
+  + readline                 8.2  h8228510_1          conda-forge/linux-64     Cached
+  + setuptools            69.0.3  pyhd8ed1ab_0        conda-forge/noarch        471kB
+  + sqlite                3.44.2  h2c6b66d_0          conda-forge/linux-64      836kB
+  + tk                    8.6.13  noxft_h4845f30_101  conda-forge/linux-64        3MB
+  + tzdata                 2023d  h0c530f3_0          conda-forge/noarch        120kB
+  + wheel                 0.42.0  pyhd8ed1ab_0        conda-forge/noarch         58kB
+  + xz                     5.2.6  h166bdaf_0          conda-forge/linux-64     Cached
+
+  Summary:
+
+  Install: 23 packages
+
+  Total download: 12MB
+
+───────────────────────────────────────────────────────────────────────────────────────
+
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+Installing pip dependencies: ...working... Ran pip subprocess with arguments:
+[&#39;/home/cms.rkansal/mambaforge/envs/machine-learning-das/bin/python&#39;, &#39;-m&#39;, &#39;pip&#39;, &#39;install&#39;, &#39;-U&#39;, &#39;-r&#39;, &#39;/home/cms.rkansal/machine-learning-das/machine-learning-das/condaenv.5i5i1hst.requirements.txt&#39;, &#39;--exists-action=b&#39;]
+Pip subprocess output:
+Collecting matplotlib (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 1))
+  Downloading matplotlib-3.8.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.8 kB)
+Collecting numpy (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 2))
+  Downloading numpy-1.26.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.2/61.2 kB 7.1 MB/s eta 0:00:00
+Collecting uproot (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 3))
+  Downloading uproot-5.2.1-py3-none-any.whl.metadata (30 kB)
+Collecting h5py (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 4))
+  Downloading h5py-3.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.5 kB)
+Collecting keras (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 5))
+  Downloading keras-3.0.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting tensorflow (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading tensorflow-2.15.0.post1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Collecting scikit-learn (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 7))
+  Downloading scikit_learn-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Collecting scikit-optimize (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 8))
+  Downloading scikit_optimize-0.9.0-py2.py3-none-any.whl (100 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100.3/100.3 kB 29.2 MB/s eta 0:00:00
+Collecting pandas (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 9))
+  Downloading pandas-2.1.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)
+Collecting torch (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading torch-2.1.2-cp310-cp310-manylinux1_x86_64.whl.metadata (25 kB)
+Collecting ipykernel (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading ipykernel-6.28.0-py3-none-any.whl.metadata (6.0 kB)
+Collecting tqdm (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 12))
+  Downloading tqdm-4.66.1-py3-none-any.whl.metadata (57 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.6/57.6 kB 97.9 MB/s eta 0:00:00
+Collecting jupyter (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyter-1.0.0-py2.py3-none-any.whl (2.7 kB)
+Collecting xgboost (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 14))
+  Downloading xgboost-2.0.3-py3-none-manylinux2014_x86_64.whl.metadata (2.0 kB)
+Collecting contourpy&gt;=1.0.1 (from matplotlib-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 1))
+  Downloading contourpy-1.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.8 kB)
+Collecting cycler&gt;=0.10 (from matplotlib-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 1))
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools&gt;=4.22.0 (from matplotlib-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 1))
+  Downloading fonttools-4.47.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (157 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 157.2/157.2 kB 180.8 MB/s eta 0:00:00
+Collecting kiwisolver&gt;=1.3.1 (from matplotlib-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 1))
+  Downloading kiwisolver-1.4.5-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (6.4 kB)
+Collecting packaging&gt;=20.0 (from matplotlib-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 1))
+  Downloading packaging-23.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting pillow&gt;=8 (from matplotlib-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 1))
+  Downloading pillow-10.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.7 kB)
+Collecting pyparsing&gt;=2.3.1 (from matplotlib-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 1))
+  Downloading pyparsing-3.1.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting python-dateutil&gt;=2.7 (from matplotlib-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 1))
+  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 122.7 MB/s eta 0:00:00
+Collecting awkward&gt;=2.4.6 (from uproot-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 3))
+  Downloading awkward-2.5.1-py3-none-any.whl.metadata (6.9 kB)
+Collecting fsspec (from uproot-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 3))
+  Downloading fsspec-2023.12.2-py3-none-any.whl.metadata (6.8 kB)
+Collecting typing-extensions&gt;=4.1.0 (from uproot-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 3))
+  Downloading typing_extensions-4.9.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting absl-py (from keras-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 5))
+  Downloading absl_py-2.0.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting rich (from keras-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 5))
+  Downloading rich-13.7.0-py3-none-any.whl.metadata (18 kB)
+Collecting namex (from keras-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 5))
+  Downloading namex-0.0.7-py3-none-any.whl (5.8 kB)
+Collecting dm-tree (from keras-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 5))
+  Downloading dm_tree-0.1.8-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (152 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 152.8/152.8 kB 196.7 MB/s eta 0:00:00
+Collecting astunparse&gt;=1.6.0 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Collecting flatbuffers&gt;=23.5.26 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading flatbuffers-23.5.26-py2.py3-none-any.whl.metadata (850 bytes)
+Collecting gast!=0.5.0,!=0.5.1,!=0.5.2,&gt;=0.2.1 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading gast-0.5.4-py3-none-any.whl (19 kB)
+Collecting google-pasta&gt;=0.1.1 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading google_pasta-0.2.0-py3-none-any.whl (57 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.5/57.5 kB 172.5 MB/s eta 0:00:00
+Collecting libclang&gt;=13.0.0 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading libclang-16.0.6-py2.py3-none-manylinux2010_x86_64.whl.metadata (5.2 kB)
+Collecting ml-dtypes~=0.2.0 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading ml_dtypes-0.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Collecting opt-einsum&gt;=2.3.2 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.5/65.5 kB 123.0 MB/s eta 0:00:00
+Collecting protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,&lt;5.0.0dev,&gt;=3.20.3 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading protobuf-4.25.1-cp37-abi3-manylinux2014_x86_64.whl.metadata (541 bytes)
+Requirement already satisfied: setuptools in /home/cms.rkansal/mambaforge/envs/machine-learning-das/lib/python3.10/site-packages (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6)) (69.0.3)
+Collecting six&gt;=1.12.0 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting termcolor&gt;=1.1.0 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading termcolor-2.4.0-py3-none-any.whl.metadata (6.1 kB)
+Collecting wrapt&lt;1.15,&gt;=1.11.0 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading wrapt-1.14.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (77 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 77.9/77.9 kB 106.3 MB/s eta 0:00:00
+Collecting tensorflow-io-gcs-filesystem&gt;=0.23.1 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading tensorflow_io_gcs_filesystem-0.35.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (14 kB)
+Collecting grpcio&lt;2.0,&gt;=1.24.3 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading grpcio-1.60.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Collecting tensorboard&lt;2.16,&gt;=2.15 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading tensorboard-2.15.1-py3-none-any.whl.metadata (1.7 kB)
+Collecting tensorflow-estimator&lt;2.16,&gt;=2.15.0 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading tensorflow_estimator-2.15.0-py2.py3-none-any.whl.metadata (1.3 kB)
+Collecting keras (from -r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 5))
+  Downloading keras-2.15.0-py3-none-any.whl.metadata (2.4 kB)
+Collecting scipy&gt;=1.5.0 (from scikit-learn-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 7))
+  Downloading scipy-1.11.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.4/60.4 kB 115.9 MB/s eta 0:00:00
+Collecting joblib&gt;=1.1.1 (from scikit-learn-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 7))
+  Downloading joblib-1.3.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting threadpoolctl&gt;=2.0.0 (from scikit-learn-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 7))
+  Downloading threadpoolctl-3.2.0-py3-none-any.whl.metadata (10.0 kB)
+Collecting pyaml&gt;=16.9 (from scikit-optimize-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 8))
+  Downloading pyaml-23.12.0-py3-none-any.whl.metadata (11 kB)
+Collecting pytz&gt;=2020.1 (from pandas-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 9))
+  Downloading pytz-2023.3.post1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata&gt;=2022.1 (from pandas-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 9))
+  Downloading tzdata-2023.4-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting filelock (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading filelock-3.13.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting sympy (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading sympy-1.12-py3-none-any.whl (5.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.7/5.7 MB 59.7 MB/s eta 0:00:00
+Collecting networkx (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading networkx-3.2.1-py3-none-any.whl.metadata (5.2 kB)
+Collecting jinja2 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 122.8 MB/s eta 0:00:00
+Collecting nvidia-cuda-nvrtc-cu12==12.1.105 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_cuda_nvrtc_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (23.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.7/23.7 MB 65.8 MB/s eta 0:00:00
+Collecting nvidia-cuda-runtime-cu12==12.1.105 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_cuda_runtime_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (823 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 823.6/823.6 kB 59.1 MB/s eta 0:00:00
+Collecting nvidia-cuda-cupti-cu12==12.1.105 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_cuda_cupti_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (14.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.1/14.1 MB 21.0 MB/s eta 0:00:00
+Collecting nvidia-cudnn-cu12==8.9.2.26 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_cudnn_cu12-8.9.2.26-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cublas-cu12==12.1.3.1 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_cublas_cu12-12.1.3.1-py3-none-manylinux1_x86_64.whl (410.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 410.6/410.6 MB 26.7 MB/s eta 0:00:00
+Collecting nvidia-cufft-cu12==11.0.2.54 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_cufft_cu12-11.0.2.54-py3-none-manylinux1_x86_64.whl (121.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 121.6/121.6 MB 34.0 MB/s eta 0:00:00
+Collecting nvidia-curand-cu12==10.3.2.106 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_curand_cu12-10.3.2.106-py3-none-manylinux1_x86_64.whl (56.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.5/56.5 MB 30.7 MB/s eta 0:00:00
+Collecting nvidia-cusolver-cu12==11.4.5.107 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_cusolver_cu12-11.4.5.107-py3-none-manylinux1_x86_64.whl (124.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 124.2/124.2 MB 25.4 MB/s eta 0:00:00
+Collecting nvidia-cusparse-cu12==12.1.0.106 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_cusparse_cu12-12.1.0.106-py3-none-manylinux1_x86_64.whl (196.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 196.0/196.0 MB 35.0 MB/s eta 0:00:00
+Collecting nvidia-nccl-cu12==2.18.1 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_nccl_cu12-2.18.1-py3-none-manylinux1_x86_64.whl (209.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 209.8/209.8 MB 34.6 MB/s eta 0:00:00
+Collecting nvidia-nvtx-cu12==12.1.105 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_nvtx_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (99 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 99.1/99.1 kB 142.8 MB/s eta 0:00:00
+Collecting triton==2.1.0 (from torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading triton-2.1.0-0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.3 kB)
+Collecting nvidia-nvjitlink-cu12 (from nvidia-cusolver-cu12==11.4.5.107-&gt;torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading nvidia_nvjitlink_cu12-12.3.101-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting comm&gt;=0.1.1 (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading comm-0.2.1-py3-none-any.whl.metadata (3.7 kB)
+Collecting debugpy&gt;=1.6.5 (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading debugpy-1.8.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.0 kB)
+Collecting ipython&gt;=7.23.1 (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading ipython-8.20.0-py3-none-any.whl.metadata (5.9 kB)
+Collecting jupyter-client&gt;=6.1.12 (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading jupyter_client-8.6.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting jupyter-core!=5.0.*,&gt;=4.12 (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading jupyter_core-5.7.1-py3-none-any.whl.metadata (3.4 kB)
+Collecting matplotlib-inline&gt;=0.1 (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading matplotlib_inline-0.1.6-py3-none-any.whl (9.4 kB)
+Collecting nest-asyncio (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading nest_asyncio-1.5.8-py3-none-any.whl.metadata (2.8 kB)
+Collecting psutil (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading psutil-5.9.7-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (21 kB)
+Collecting pyzmq&gt;=24 (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading pyzmq-25.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting tornado&gt;=6.1 (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading tornado-6.4-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.5 kB)
+Collecting traitlets&gt;=5.4.0 (from ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading traitlets-5.14.1-py3-none-any.whl.metadata (10 kB)
+Collecting notebook (from jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading notebook-7.0.6-py3-none-any.whl.metadata (10 kB)
+Collecting qtconsole (from jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading qtconsole-5.5.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting jupyter-console (from jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyter_console-6.6.3-py3-none-any.whl (24 kB)
+Collecting nbconvert (from jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading nbconvert-7.14.0-py3-none-any.whl.metadata (7.7 kB)
+Collecting ipywidgets (from jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading ipywidgets-8.1.1-py3-none-any.whl.metadata (2.4 kB)
+Requirement already satisfied: wheel&lt;1.0,&gt;=0.23.0 in /home/cms.rkansal/mambaforge/envs/machine-learning-das/lib/python3.10/site-packages (from astunparse&gt;=1.6.0-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6)) (0.42.0)
+Collecting awkward-cpp==27 (from awkward&gt;=2.4.6-&gt;uproot-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 3))
+  Downloading awkward_cpp-27-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.2 kB)
+Collecting importlib-metadata&gt;=4.13.0 (from awkward&gt;=2.4.6-&gt;uproot-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 3))
+  Downloading importlib_metadata-7.0.1-py3-none-any.whl.metadata (4.9 kB)
+Collecting decorator (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading decorator-5.1.1-py3-none-any.whl (9.1 kB)
+Collecting jedi&gt;=0.16 (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading jedi-0.19.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting prompt-toolkit&lt;3.1.0,&gt;=3.0.41 (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading prompt_toolkit-3.0.43-py3-none-any.whl.metadata (6.5 kB)
+Collecting pygments&gt;=2.4.0 (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading pygments-2.17.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting stack-data (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading stack_data-0.6.3-py3-none-any.whl.metadata (18 kB)
+Collecting exceptiongroup (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading exceptiongroup-1.2.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pexpect&gt;4.3 (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading pexpect-4.9.0-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting platformdirs&gt;=2.5 (from jupyter-core!=5.0.*,&gt;=4.12-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading platformdirs-4.1.0-py3-none-any.whl.metadata (11 kB)
+Collecting PyYAML (from pyaml&gt;=16.9-&gt;scikit-optimize-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 8))
+  Downloading PyYAML-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting google-auth&lt;3,&gt;=1.6.3 (from tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading google_auth-2.26.1-py2.py3-none-any.whl.metadata (4.7 kB)
+Collecting google-auth-oauthlib&lt;2,&gt;=0.5 (from tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading google_auth_oauthlib-1.2.0-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting markdown&gt;=2.6.8 (from tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading Markdown-3.5.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,&lt;5.0.0dev,&gt;=3.20.3 (from tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading protobuf-4.23.4-cp37-abi3-manylinux2014_x86_64.whl.metadata (540 bytes)
+Collecting requests&lt;3,&gt;=2.21.0 (from tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting tensorboard-data-server&lt;0.8.0,&gt;=0.7.0 (from tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading tensorboard_data_server-0.7.2-py3-none-any.whl.metadata (1.1 kB)
+Collecting werkzeug&gt;=1.0.1 (from tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading werkzeug-3.0.1-py3-none-any.whl.metadata (4.1 kB)
+Collecting widgetsnbextension~=4.0.9 (from ipywidgets-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading widgetsnbextension-4.0.9-py3-none-any.whl.metadata (1.6 kB)
+Collecting jupyterlab-widgets~=3.0.9 (from ipywidgets-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyterlab_widgets-3.0.9-py3-none-any.whl.metadata (4.1 kB)
+Collecting MarkupSafe&gt;=2.0 (from jinja2-&gt;torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.0 kB)
+Collecting beautifulsoup4 (from nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading beautifulsoup4-4.12.2-py3-none-any.whl (142 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 143.0/143.0 kB 111.8 MB/s eta 0:00:00
+Collecting bleach!=5.0.0 (from nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading bleach-6.1.0-py3-none-any.whl.metadata (30 kB)
+Collecting defusedxml (from nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Collecting jupyterlab-pygments (from nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyterlab_pygments-0.3.0-py3-none-any.whl.metadata (4.4 kB)
+Collecting mistune&lt;4,&gt;=2.0.3 (from nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading mistune-3.0.2-py3-none-any.whl.metadata (1.7 kB)
+Collecting nbclient&gt;=0.5.0 (from nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading nbclient-0.9.0-py3-none-any.whl.metadata (7.8 kB)
+Collecting nbformat&gt;=5.7 (from nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading nbformat-5.9.2-py3-none-any.whl.metadata (3.4 kB)
+Collecting pandocfilters&gt;=1.4.1 (from nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading pandocfilters-1.5.0-py2.py3-none-any.whl (8.7 kB)
+Collecting tinycss2 (from nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading tinycss2-1.2.1-py3-none-any.whl (21 kB)
+Collecting jupyter-server&lt;3,&gt;=2.4.0 (from notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyter_server-2.12.2-py3-none-any.whl.metadata (8.4 kB)
+Collecting jupyterlab-server&lt;3,&gt;=2.22.1 (from notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyterlab_server-2.25.2-py3-none-any.whl.metadata (5.9 kB)
+Collecting jupyterlab&lt;5,&gt;=4.0.2 (from notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyterlab-4.0.10-py3-none-any.whl.metadata (15 kB)
+Collecting notebook-shim&lt;0.3,&gt;=0.2 (from notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading notebook_shim-0.2.3-py3-none-any.whl (13 kB)
+Collecting qtpy&gt;=2.4.0 (from qtconsole-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading QtPy-2.4.1-py3-none-any.whl.metadata (12 kB)
+Collecting mpmath&gt;=0.19 (from sympy-&gt;torch-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 10))
+  Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 44.7 MB/s eta 0:00:00
+Collecting webencodings (from bleach!=5.0.0-&gt;nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading webencodings-0.5.1-py2.py3-none-any.whl (11 kB)
+Collecting cachetools&lt;6.0,&gt;=2.0.0 (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading cachetools-5.3.2-py3-none-any.whl.metadata (5.2 kB)
+Collecting pyasn1-modules&gt;=0.2.1 (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading pyasn1_modules-0.3.0-py2.py3-none-any.whl (181 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 181.3/181.3 kB 122.0 MB/s eta 0:00:00
+Collecting rsa&lt;5,&gt;=3.1.4 (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading rsa-4.9-py3-none-any.whl (34 kB)
+Collecting requests-oauthlib&gt;=0.7.0 (from google-auth-oauthlib&lt;2,&gt;=0.5-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading requests_oauthlib-1.3.1-py2.py3-none-any.whl (23 kB)
+Collecting zipp&gt;=0.5 (from importlib-metadata&gt;=4.13.0-&gt;awkward&gt;=2.4.6-&gt;uproot-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 3))
+  Downloading zipp-3.17.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting parso&lt;0.9.0,&gt;=0.8.3 (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading parso-0.8.3-py2.py3-none-any.whl (100 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100.8/100.8 kB 106.4 MB/s eta 0:00:00
+Collecting anyio&gt;=3.1.0 (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading anyio-4.2.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting argon2-cffi (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading argon2_cffi-23.1.0-py3-none-any.whl.metadata (5.2 kB)
+Collecting jupyter-events&gt;=0.9.0 (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyter_events-0.9.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting jupyter-server-terminals (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyter_server_terminals-0.5.1-py3-none-any.whl.metadata (5.6 kB)
+Collecting overrides (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading overrides-7.4.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting prometheus-client (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading prometheus_client-0.19.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting send2trash&gt;=1.8.2 (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading Send2Trash-1.8.2-py3-none-any.whl (18 kB)
+Collecting terminado&gt;=0.8.3 (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading terminado-0.18.0-py3-none-any.whl.metadata (5.8 kB)
+Collecting websocket-client (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading websocket_client-1.7.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting async-lru&gt;=1.0.0 (from jupyterlab&lt;5,&gt;=4.0.2-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading async_lru-2.0.4-py3-none-any.whl.metadata (4.5 kB)
+Collecting jupyter-lsp&gt;=2.0.0 (from jupyterlab&lt;5,&gt;=4.0.2-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jupyter_lsp-2.2.1-py3-none-any.whl.metadata (1.8 kB)
+Collecting tomli (from jupyterlab&lt;5,&gt;=4.0.2-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+Collecting babel&gt;=2.10 (from jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading Babel-2.14.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting json5&gt;=0.9.0 (from jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading json5-0.9.14-py2.py3-none-any.whl.metadata (10 kB)
+Collecting jsonschema&gt;=4.18.0 (from jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jsonschema-4.20.0-py3-none-any.whl.metadata (8.1 kB)
+Collecting fastjsonschema (from nbformat&gt;=5.7-&gt;nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading fastjsonschema-2.19.1-py3-none-any.whl.metadata (2.1 kB)
+Collecting ptyprocess&gt;=0.5 (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Collecting wcwidth (from prompt-toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading wcwidth-0.2.13-py2.py3-none-any.whl.metadata (14 kB)
+Collecting charset-normalizer&lt;4,&gt;=2 (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading charset_normalizer-3.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (33 kB)
+Collecting idna&lt;4,&gt;=2.5 (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading idna-3.6-py3-none-any.whl.metadata (9.9 kB)
+Collecting urllib3&lt;3,&gt;=1.21.1 (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading urllib3-2.1.0-py3-none-any.whl.metadata (6.4 kB)
+Collecting certifi&gt;=2017.4.17 (from requests&lt;3,&gt;=2.21.0-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading certifi-2023.11.17-py3-none-any.whl.metadata (2.2 kB)
+Collecting soupsieve&gt;1.2 (from beautifulsoup4-&gt;nbconvert-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading soupsieve-2.5-py3-none-any.whl.metadata (4.7 kB)
+Collecting executing&gt;=1.2.0 (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading executing-2.0.1-py2.py3-none-any.whl.metadata (9.0 kB)
+Collecting asttokens&gt;=2.1.0 (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading asttokens-2.4.1-py2.py3-none-any.whl.metadata (5.2 kB)
+Collecting pure-eval (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 11))
+  Downloading pure_eval-0.2.2-py3-none-any.whl (11 kB)
+Collecting sniffio&gt;=1.1 (from anyio&gt;=3.1.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading sniffio-1.3.0-py3-none-any.whl (10 kB)
+Collecting attrs&gt;=22.2.0 (from jsonschema&gt;=4.18.0-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading attrs-23.2.0-py3-none-any.whl.metadata (9.5 kB)
+Collecting jsonschema-specifications&gt;=2023.03.6 (from jsonschema&gt;=4.18.0-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jsonschema_specifications-2023.12.1-py3-none-any.whl.metadata (3.0 kB)
+Collecting referencing&gt;=0.28.4 (from jsonschema&gt;=4.18.0-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading referencing-0.32.1-py3-none-any.whl.metadata (2.7 kB)
+Collecting rpds-py&gt;=0.7.1 (from jsonschema&gt;=4.18.0-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading rpds_py-0.16.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting python-json-logger&gt;=2.0.4 (from jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading python_json_logger-2.0.7-py3-none-any.whl (8.1 kB)
+Collecting rfc3339-validator (from jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+Collecting rfc3986-validator&gt;=0.1.1 (from jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading rfc3986_validator-0.1.1-py2.py3-none-any.whl (4.2 kB)
+Collecting pyasn1&lt;0.6.0,&gt;=0.4.6 (from pyasn1-modules&gt;=0.2.1-&gt;google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading pyasn1-0.5.1-py2.py3-none-any.whl.metadata (8.6 kB)
+Collecting oauthlib&gt;=3.0.0 (from requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib&lt;2,&gt;=0.5-&gt;tensorboard&lt;2.16,&gt;=2.15-&gt;tensorflow-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 6))
+  Downloading oauthlib-3.2.2-py3-none-any.whl (151 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 151.7/151.7 kB 123.9 MB/s eta 0:00:00
+Collecting argon2-cffi-bindings (from argon2-cffi-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (86 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.2/86.2 kB 91.0 MB/s eta 0:00:00
+Collecting fqdn (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading fqdn-1.5.1-py3-none-any.whl (9.1 kB)
+Collecting isoduration (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading isoduration-20.11.0-py3-none-any.whl (11 kB)
+Collecting jsonpointer&gt;1.13 (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading jsonpointer-2.4-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting uri-template (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading uri_template-1.3.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting webcolors&gt;=1.11 (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading webcolors-1.13-py3-none-any.whl (14 kB)
+Collecting cffi&gt;=1.0.1 (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting pycparser (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading pycparser-2.21-py2.py3-none-any.whl (118 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.7/118.7 kB 182.1 MB/s eta 0:00:00
+Collecting arrow&gt;=0.15.0 (from isoduration-&gt;jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading arrow-1.3.0-py3-none-any.whl.metadata (7.5 kB)
+Collecting types-python-dateutil&gt;=2.8.10 (from arrow&gt;=0.15.0-&gt;isoduration-&gt;jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook-&gt;jupyter-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 13))
+  Downloading types_python_dateutil-2.8.19.20240106-py3-none-any.whl.metadata (1.8 kB)
+Collecting markdown-it-py&gt;=2.2.0 (from rich-&gt;keras-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 5))
+  Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting mdurl~=0.1 (from markdown-it-py&gt;=2.2.0-&gt;rich-&gt;keras-&gt;-r /home/cms.rkansal/machine-learning-das/machine-learning-das/requirements.txt (line 5))
+  Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading matplotlib-3.8.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.6/11.6 MB 43.1 MB/s eta 0:00:00
+Downloading numpy-1.26.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 46.7 MB/s eta 0:00:00
+Downloading uproot-5.2.1-py3-none-any.whl (343 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 343.8/343.8 kB 56.7 MB/s eta 0:00:00
+Downloading h5py-3.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 57.1 MB/s eta 0:00:00
+Downloading tensorflow-2.15.0.post1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (475.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 475.2/475.2 MB 36.6 MB/s eta 0:00:00
+Downloading keras-2.15.0-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 44.6 MB/s eta 0:00:00
+Downloading scikit_learn-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.8/10.8 MB 27.5 MB/s eta 0:00:00
+Downloading pandas-2.1.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.3/12.3 MB 23.1 MB/s eta 0:00:00
+Downloading torch-2.1.2-cp310-cp310-manylinux1_x86_64.whl (670.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 670.2/670.2 MB 28.3 MB/s eta 0:00:00
+Downloading nvidia_cudnn_cu12-8.9.2.26-py3-none-manylinux1_x86_64.whl (731.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 731.7/731.7 MB 45.1 MB/s eta 0:00:00
+Downloading triton-2.1.0-0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (89.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 89.2/89.2 MB 23.9 MB/s eta 0:00:00
+Downloading ipykernel-6.28.0-py3-none-any.whl (114 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 114.1/114.1 kB 165.6 MB/s eta 0:00:00
+Downloading tqdm-4.66.1-py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.3/78.3 kB 194.3 MB/s eta 0:00:00
+Downloading xgboost-2.0.3-py3-none-manylinux2014_x86_64.whl (297.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 297.1/297.1 MB 32.8 MB/s eta 0:00:00
+Downloading absl_py-2.0.0-py3-none-any.whl (130 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.2/130.2 kB 189.1 MB/s eta 0:00:00
+Downloading awkward-2.5.1-py3-none-any.whl (733 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 733.1/733.1 kB 37.9 MB/s eta 0:00:00
+Downloading awkward_cpp-27-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (706 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 706.4/706.4 kB 40.5 MB/s eta 0:00:00
+Downloading comm-0.2.1-py3-none-any.whl (7.2 kB)
+Downloading contourpy-1.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (310 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 310.7/310.7 kB 48.4 MB/s eta 0:00:00
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading debugpy-1.8.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 35.7 MB/s eta 0:00:00
+Downloading flatbuffers-23.5.26-py2.py3-none-any.whl (26 kB)
+Downloading fonttools-4.47.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 40.1 MB/s eta 0:00:00
+Downloading grpcio-1.60.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.4/5.4 MB 42.2 MB/s eta 0:00:00
+Downloading ipython-8.20.0-py3-none-any.whl (809 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 809.2/809.2 kB 52.8 MB/s eta 0:00:00
+Downloading joblib-1.3.2-py3-none-any.whl (302 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 302.2/302.2 kB 76.6 MB/s eta 0:00:00
+Downloading jupyter_client-8.6.0-py3-none-any.whl (105 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 105.9/105.9 kB 203.2 MB/s eta 0:00:00
+Downloading jupyter_core-5.7.1-py3-none-any.whl (28 kB)
+Downloading kiwisolver-1.4.5-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 46.6 MB/s eta 0:00:00
+Downloading libclang-16.0.6-py2.py3-none-manylinux2010_x86_64.whl (22.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 22.9/22.9 MB 42.2 MB/s eta 0:00:00
+Downloading ml_dtypes-0.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 39.1 MB/s eta 0:00:00
+Downloading packaging-23.2-py3-none-any.whl (53 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 53.0/53.0 kB 127.7 MB/s eta 0:00:00
+Downloading pillow-10.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 36.7 MB/s eta 0:00:00
+Downloading pyaml-23.12.0-py3-none-any.whl (23 kB)
+Downloading pyparsing-3.1.1-py3-none-any.whl (103 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.1/103.1 kB 89.5 MB/s eta 0:00:00
+Downloading pytz-2023.3.post1-py2.py3-none-any.whl (502 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 502.5/502.5 kB 34.0 MB/s eta 0:00:00
+Downloading pyzmq-25.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 30.3 MB/s eta 0:00:00
+Downloading scipy-1.11.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (36.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 36.4/36.4 MB 34.4 MB/s eta 0:00:00
+Downloading tensorboard-2.15.1-py3-none-any.whl (5.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 37.7 MB/s eta 0:00:00
+Downloading protobuf-4.23.4-cp37-abi3-manylinux2014_x86_64.whl (304 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 304.5/304.5 kB 47.9 MB/s eta 0:00:00
+Downloading tensorflow_estimator-2.15.0-py2.py3-none-any.whl (441 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 442.0/442.0 kB 55.0 MB/s eta 0:00:00
+Downloading tensorflow_io_gcs_filesystem-0.35.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 42.9 MB/s eta 0:00:00
+Downloading termcolor-2.4.0-py3-none-any.whl (7.7 kB)
+Downloading threadpoolctl-3.2.0-py3-none-any.whl (15 kB)
+Downloading tornado-6.4-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (435 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 435.4/435.4 kB 55.8 MB/s eta 0:00:00
+Downloading traitlets-5.14.1-py3-none-any.whl (85 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.4/85.4 kB 179.2 MB/s eta 0:00:00
+Downloading typing_extensions-4.9.0-py3-none-any.whl (32 kB)
+Downloading tzdata-2023.4-py2.py3-none-any.whl (346 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 346.6/346.6 kB 54.3 MB/s eta 0:00:00
+Downloading filelock-3.13.1-py3-none-any.whl (11 kB)
+Downloading fsspec-2023.12.2-py3-none-any.whl (168 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 169.0/169.0 kB 150.6 MB/s eta 0:00:00
+Downloading ipywidgets-8.1.1-py3-none-any.whl (139 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 139.4/139.4 kB 157.2 MB/s eta 0:00:00
+Downloading nbconvert-7.14.0-py3-none-any.whl (256 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 256.4/256.4 kB 100.7 MB/s eta 0:00:00
+Downloading nest_asyncio-1.5.8-py3-none-any.whl (5.3 kB)
+Downloading networkx-3.2.1-py3-none-any.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 46.1 MB/s eta 0:00:00
+Downloading notebook-7.0.6-py3-none-any.whl (4.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 45.6 MB/s eta 0:00:00
+Downloading psutil-5.9.7-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (285 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 285.5/285.5 kB 79.2 MB/s eta 0:00:00
+Downloading qtconsole-5.5.1-py3-none-any.whl (123 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.4/123.4 kB 117.3 MB/s eta 0:00:00
+Downloading bleach-6.1.0-py3-none-any.whl (162 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 162.8/162.8 kB 145.2 MB/s eta 0:00:00
+Downloading google_auth-2.26.1-py2.py3-none-any.whl (186 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 186.4/186.4 kB 177.6 MB/s eta 0:00:00
+Downloading google_auth_oauthlib-1.2.0-py2.py3-none-any.whl (24 kB)
+Downloading importlib_metadata-7.0.1-py3-none-any.whl (23 kB)
+Downloading jedi-0.19.1-py2.py3-none-any.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 48.9 MB/s eta 0:00:00
+Downloading jupyter_server-2.12.2-py3-none-any.whl (380 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 380.3/380.3 kB 53.8 MB/s eta 0:00:00
+Downloading jupyterlab-4.0.10-py3-none-any.whl (9.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 45.9 MB/s eta 0:00:00
+Downloading jupyterlab_server-2.25.2-py3-none-any.whl (58 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.9/58.9 kB 156.0 MB/s eta 0:00:00
+Downloading jupyterlab_widgets-3.0.9-py3-none-any.whl (214 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.9/214.9 kB 149.7 MB/s eta 0:00:00
+Downloading Markdown-3.5.1-py3-none-any.whl (102 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 102.2/102.2 kB 199.6 MB/s eta 0:00:00
+Downloading MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Downloading mistune-3.0.2-py3-none-any.whl (47 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.0/48.0 kB 175.0 MB/s eta 0:00:00
+Downloading nbclient-0.9.0-py3-none-any.whl (24 kB)
+Downloading nbformat-5.9.2-py3-none-any.whl (77 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 77.6/77.6 kB 155.8 MB/s eta 0:00:00
+Downloading pexpect-4.9.0-py2.py3-none-any.whl (63 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.8/63.8 kB 121.0 MB/s eta 0:00:00
+Downloading platformdirs-4.1.0-py3-none-any.whl (17 kB)
+Downloading prompt_toolkit-3.0.43-py3-none-any.whl (386 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 386.1/386.1 kB 61.6 MB/s eta 0:00:00
+Downloading pygments-2.17.2-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 50.5 MB/s eta 0:00:00
+Downloading QtPy-2.4.1-py3-none-any.whl (93 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.5/93.5 kB 111.2 MB/s eta 0:00:00
+Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 158.3 MB/s eta 0:00:00
+Downloading tensorboard_data_server-0.7.2-py3-none-any.whl (2.4 kB)
+Downloading werkzeug-3.0.1-py3-none-any.whl (226 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 226.7/226.7 kB 165.8 MB/s eta 0:00:00
+Downloading widgetsnbextension-4.0.9-py3-none-any.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 48.9 MB/s eta 0:00:00
+Downloading exceptiongroup-1.2.0-py3-none-any.whl (16 kB)
+Downloading jupyterlab_pygments-0.3.0-py3-none-any.whl (15 kB)
+Downloading nvidia_nvjitlink_cu12-12.3.101-py3-none-manylinux1_x86_64.whl (20.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.5/20.5 MB 56.5 MB/s eta 0:00:00
+Downloading PyYAML-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (705 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 705.5/705.5 kB 74.6 MB/s eta 0:00:00
+Downloading stack_data-0.6.3-py3-none-any.whl (24 kB)
+Downloading anyio-4.2.0-py3-none-any.whl (85 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.5/85.5 kB 189.3 MB/s eta 0:00:00
+Downloading asttokens-2.4.1-py2.py3-none-any.whl (27 kB)
+Downloading async_lru-2.0.4-py3-none-any.whl (6.1 kB)
+Downloading Babel-2.14.0-py3-none-any.whl (11.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.0/11.0 MB 58.1 MB/s eta 0:00:00
+Downloading cachetools-5.3.2-py3-none-any.whl (9.3 kB)
+Downloading certifi-2023.11.17-py3-none-any.whl (162 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 162.5/162.5 kB 196.7 MB/s eta 0:00:00
+Downloading charset_normalizer-3.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (142 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 142.1/142.1 kB 200.4 MB/s eta 0:00:00
+Downloading executing-2.0.1-py2.py3-none-any.whl (24 kB)
+Downloading idna-3.6-py3-none-any.whl (61 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.6/61.6 kB 138.0 MB/s eta 0:00:00
+Downloading json5-0.9.14-py2.py3-none-any.whl (19 kB)
+Downloading jsonschema-4.20.0-py3-none-any.whl (84 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 84.7/84.7 kB 151.3 MB/s eta 0:00:00
+Downloading jupyter_events-0.9.0-py3-none-any.whl (18 kB)
+Downloading jupyter_lsp-2.2.1-py3-none-any.whl (66 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.0/66.0 kB 186.5 MB/s eta 0:00:00
+Downloading soupsieve-2.5-py3-none-any.whl (36 kB)
+Downloading terminado-0.18.0-py3-none-any.whl (14 kB)
+Downloading urllib3-2.1.0-py3-none-any.whl (104 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 104.6/104.6 kB 182.9 MB/s eta 0:00:00
+Downloading zipp-3.17.0-py3-none-any.whl (7.4 kB)
+Downloading argon2_cffi-23.1.0-py3-none-any.whl (15 kB)
+Downloading fastjsonschema-2.19.1-py3-none-any.whl (23 kB)
+Downloading jupyter_server_terminals-0.5.1-py3-none-any.whl (13 kB)
+Downloading overrides-7.4.0-py3-none-any.whl (17 kB)
+Downloading prometheus_client-0.19.0-py3-none-any.whl (54 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.2/54.2 kB 130.6 MB/s eta 0:00:00
+Downloading wcwidth-0.2.13-py2.py3-none-any.whl (34 kB)
+Downloading websocket_client-1.7.0-py3-none-any.whl (58 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.5/58.5 kB 158.5 MB/s eta 0:00:00
+Downloading attrs-23.2.0-py3-none-any.whl (60 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.8/60.8 kB 184.3 MB/s eta 0:00:00
+Downloading jsonschema_specifications-2023.12.1-py3-none-any.whl (18 kB)
+Downloading pyasn1-0.5.1-py2.py3-none-any.whl (84 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 84.9/84.9 kB 157.9 MB/s eta 0:00:00
+Downloading referencing-0.32.1-py3-none-any.whl (26 kB)
+Downloading rpds_py-0.16.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 74.3 MB/s eta 0:00:00
+Downloading cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (443 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 443.9/443.9 kB 72.3 MB/s eta 0:00:00
+Downloading jsonpointer-2.4-py2.py3-none-any.whl (7.8 kB)
+Downloading uri_template-1.3.0-py3-none-any.whl (11 kB)
+Downloading arrow-1.3.0-py3-none-any.whl (66 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.4/66.4 kB 138.4 MB/s eta 0:00:00
+Downloading types_python_dateutil-2.8.19.20240106-py3-none-any.whl (9.7 kB)
+Installing collected packages: webencodings, wcwidth, pytz, pure-eval, ptyprocess, mpmath, libclang, json5, flatbuffers, fastjsonschema, zipp, wrapt, widgetsnbextension, websocket-client, webcolors, urllib3, uri-template, tzdata, typing-extensions, types-python-dateutil, traitlets, tqdm, tornado, tomli, tinycss2, threadpoolctl, termcolor, tensorflow-io-gcs-filesystem, tensorflow-estimator, tensorboard-data-server, sympy, soupsieve, sniffio, six, send2trash, rpds-py, rfc3986-validator, pyzmq, PyYAML, python-json-logger, pyparsing, pygments, pycparser, pyasn1, psutil, protobuf, prompt-toolkit, prometheus-client, platformdirs, pillow, pexpect, parso, pandocfilters, packaging, overrides, oauthlib, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, numpy, networkx, nest-asyncio, mistune, MarkupSafe, markdown, kiwisolver, keras, jupyterlab-widgets, jupyterlab-pygments, jsonpointer, joblib, idna, grpcio, gast, fsspec, fqdn, fonttools, filelock, executing, exceptiongroup, defusedxml, decorator, debugpy, cycler, charset-normalizer, certifi, cachetools, babel, attrs, absl-py, werkzeug, triton, terminado, scipy, rsa, rfc3339-validator, requests, referencing, qtpy, python-dateutil, pyasn1-modules, pyaml, opt-einsum, nvidia-cusparse-cu12, nvidia-cudnn-cu12, ml-dtypes, matplotlib-inline, jupyter-core, jinja2, jedi, importlib-metadata, h5py, google-pasta, contourpy, comm, cffi, bleach, beautifulsoup4, awkward-cpp, async-lru, astunparse, asttokens, anyio, xgboost, stack-data, scikit-learn, requests-oauthlib, pandas, nvidia-cusolver-cu12, matplotlib, jupyter-server-terminals, jupyter-client, jsonschema-specifications, google-auth, awkward, arrow, argon2-cffi-bindings, uproot, torch, scikit-optimize, jsonschema, isoduration, ipython, google-auth-oauthlib, argon2-cffi, tensorboard, nbformat, ipywidgets, ipykernel, tensorflow, qtconsole, nbclient, jupyter-events, jupyter-console, nbconvert, jupyter-server, notebook-shim, jupyterlab-server, jupyter-lsp, jupyterlab, notebook, jupyter
+Successfully installed MarkupSafe-2.1.3 PyYAML-6.0.1 absl-py-2.0.0 anyio-4.2.0 argon2-cffi-23.1.0 argon2-cffi-bindings-21.2.0 arrow-1.3.0 asttokens-2.4.1 astunparse-1.6.3 async-lru-2.0.4 attrs-23.2.0 awkward-2.5.1 awkward-cpp-27 babel-2.14.0 beautifulsoup4-4.12.2 bleach-6.1.0 cachetools-5.3.2 certifi-2023.11.17 cffi-1.16.0 charset-normalizer-3.3.2 comm-0.2.1 contourpy-1.2.0 cycler-0.12.1 debugpy-1.8.0 decorator-5.1.1 defusedxml-0.7.1 exceptiongroup-1.2.0 executing-2.0.1 fastjsonschema-2.19.1 filelock-3.13.1 flatbuffers-23.5.26 fonttools-4.47.0 fqdn-1.5.1 fsspec-2023.12.2 gast-0.5.4 google-auth-2.26.1 google-auth-oauthlib-1.2.0 google-pasta-0.2.0 grpcio-1.60.0 h5py-3.10.0 idna-3.6 importlib-metadata-7.0.1 ipykernel-6.28.0 ipython-8.20.0 ipywidgets-8.1.1 isoduration-20.11.0 jedi-0.19.1 jinja2-3.1.2 joblib-1.3.2 json5-0.9.14 jsonpointer-2.4 jsonschema-4.20.0 jsonschema-specifications-2023.12.1 jupyter-1.0.0 jupyter-client-8.6.0 jupyter-console-6.6.3 jupyter-core-5.7.1 jupyter-events-0.9.0 jupyter-lsp-2.2.1 jupyter-server-2.12.2 jupyter-server-terminals-0.5.1 jupyterlab-4.0.10 jupyterlab-pygments-0.3.0 jupyterlab-server-2.25.2 jupyterlab-widgets-3.0.9 keras-2.15.0 kiwisolver-1.4.5 libclang-16.0.6 markdown-3.5.1 matplotlib-3.8.2 matplotlib-inline-0.1.6 mistune-3.0.2 ml-dtypes-0.2.0 mpmath-1.3.0 nbclient-0.9.0 nbconvert-7.14.0 nbformat-5.9.2 nest-asyncio-1.5.8 networkx-3.2.1 notebook-7.0.6 notebook-shim-0.2.3 numpy-1.26.3 nvidia-cublas-cu12-12.1.3.1 nvidia-cuda-cupti-cu12-12.1.105 nvidia-cuda-nvrtc-cu12-12.1.105 nvidia-cuda-runtime-cu12-12.1.105 nvidia-cudnn-cu12-8.9.2.26 nvidia-cufft-cu12-11.0.2.54 nvidia-curand-cu12-10.3.2.106 nvidia-cusolver-cu12-11.4.5.107 nvidia-cusparse-cu12-12.1.0.106 nvidia-nccl-cu12-2.18.1 nvidia-nvjitlink-cu12-12.3.101 nvidia-nvtx-cu12-12.1.105 oauthlib-3.2.2 opt-einsum-3.3.0 overrides-7.4.0 packaging-23.2 pandas-2.1.4 pandocfilters-1.5.0 parso-0.8.3 pexpect-4.9.0 pillow-10.2.0 platformdirs-4.1.0 prometheus-client-0.19.0 prompt-toolkit-3.0.43 protobuf-4.23.4 psutil-5.9.7 ptyprocess-0.7.0 pure-eval-0.2.2 pyaml-23.12.0 pyasn1-0.5.1 pyasn1-modules-0.3.0 pycparser-2.21 pygments-2.17.2 pyparsing-3.1.1 python-dateutil-2.8.2 python-json-logger-2.0.7 pytz-2023.3.post1 pyzmq-25.1.2 qtconsole-5.5.1 qtpy-2.4.1 referencing-0.32.1 requests-2.31.0 requests-oauthlib-1.3.1 rfc3339-validator-0.1.4 rfc3986-validator-0.1.1 rpds-py-0.16.2 rsa-4.9 scikit-learn-1.3.2 scikit-optimize-0.9.0 scipy-1.11.4 send2trash-1.8.2 six-1.16.0 sniffio-1.3.0 soupsieve-2.5 stack-data-0.6.3 sympy-1.12 tensorboard-2.15.1 tensorboard-data-server-0.7.2 tensorflow-2.15.0.post1 tensorflow-estimator-2.15.0 tensorflow-io-gcs-filesystem-0.35.0 termcolor-2.4.0 terminado-0.18.0 threadpoolctl-3.2.0 tinycss2-1.2.1 tomli-2.0.1 torch-2.1.2 tornado-6.4 tqdm-4.66.1 traitlets-5.14.1 triton-2.1.0 types-python-dateutil-2.8.19.20240106 typing-extensions-4.9.0 tzdata-2023.4 uproot-5.2.1 uri-template-1.3.0 urllib3-2.1.0 wcwidth-0.2.13 webcolors-1.13 webencodings-0.5.1 websocket-client-1.7.0 werkzeug-3.0.1 widgetsnbextension-4.0.9 wrapt-1.14.1 xgboost-2.0.3 zipp-3.17.0
+
+done
+#
+# To activate this environment, use
+#
+#     $ conda activate machine-learning-das
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Activating the kernel &quot;machine-learning-das&quot;...
+Installed kernelspec machine-learning-das in /home/cms.rkansal/.local/share/jupyter/kernels/machine-learning-das
+Installed &quot;machine-learning-das&quot;!
 </pre></div>
 </div>
 </div>

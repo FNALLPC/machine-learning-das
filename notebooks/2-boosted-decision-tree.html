@@ -431,6 +431,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-training">Run training</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-performance">Plot performance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-bdt-output-vs-input-variables">Plot BDT output vs input variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importances">Feature Importances</a></li>
 </ul>
             </nav>
         </div>
@@ -460,35 +461,35 @@ document.write(`
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2024-01-09 11:41:54--  https://zenodo.org/record/3901869/files/ntuple_4mu_bkg.root?download=1
-Resolving zenodo.org (zenodo.org)... 188.184.98.238, 188.185.79.172, 188.184.103.159
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2024-01-09 17:58:50--  https://zenodo.org/record/3901869/files/ntuple_4mu_bkg.root?download=1
+Resolving zenodo.org (zenodo.org)... 188.184.98.238, 188.184.103.159, 188.185.79.172, ...
 Connecting to zenodo.org (zenodo.org)|188.184.98.238|:443... connected.
 HTTP request sent, awaiting response... 301 MOVED PERMANENTLY
 Location: /records/3901869/files/ntuple_4mu_bkg.root [following]
---2024-01-09 11:41:55--  https://zenodo.org/records/3901869/files/ntuple_4mu_bkg.root
+--2024-01-09 17:58:51--  https://zenodo.org/records/3901869/files/ntuple_4mu_bkg.root
 Reusing existing connection to zenodo.org:443.
 HTTP request sent, awaiting response... 200 OK
 Length: 8867265 (8.5M) [application/octet-stream]
 Saving to: ‘data/ntuple_4mu_bkg.root’
 
-data/ntuple_4mu_bkg 100%[===================&gt;]   8.46M  5.30MB/s    in 1.6s    
+100%[======================================&gt;] 8,867,265   5.55MB/s   in 1.5s   
 
-2024-01-09 11:41:57 (5.30 MB/s) - ‘data/ntuple_4mu_bkg.root’ saved [8867265/8867265]
+2024-01-09 17:58:53 (5.55 MB/s) - ‘data/ntuple_4mu_bkg.root’ saved [8867265/8867265]
 
---2024-01-09 11:41:57--  https://zenodo.org/record/3901869/files/ntuple_4mu_VV.root?download=1
-Resolving zenodo.org (zenodo.org)... 188.185.79.172, 188.184.103.159, 188.184.98.238
-Connecting to zenodo.org (zenodo.org)|188.185.79.172|:443... connected.
+--2024-01-09 17:58:53--  https://zenodo.org/record/3901869/files/ntuple_4mu_VV.root?download=1
+Resolving zenodo.org (zenodo.org)... 188.184.98.238, 188.184.103.159, 188.185.79.172, ...
+Connecting to zenodo.org (zenodo.org)|188.184.98.238|:443... connected.
 HTTP request sent, awaiting response... 301 MOVED PERMANENTLY
 Location: /records/3901869/files/ntuple_4mu_VV.root [following]
---2024-01-09 11:41:58--  https://zenodo.org/records/3901869/files/ntuple_4mu_VV.root
+--2024-01-09 17:58:54--  https://zenodo.org/records/3901869/files/ntuple_4mu_VV.root
 Reusing existing connection to zenodo.org:443.
 HTTP request sent, awaiting response... 200 OK
 Length: 4505518 (4.3M) [application/octet-stream]
 Saving to: ‘data/ntuple_4mu_VV.root’
 
-data/ntuple_4mu_VV. 100%[===================&gt;]   4.30M  3.35MB/s    in 1.3s    
+100%[======================================&gt;] 4,505,518   4.11MB/s   in 1.0s   
 
-2024-01-09 11:42:00 (3.35 MB/s) - ‘data/ntuple_4mu_VV.root’ saved [4505518/4505518]
+2024-01-09 17:58:55 (4.11 MB/s) - ‘data/ntuple_4mu_VV.root’ saved [4505518/4505518]
 </pre></div>
 </div>
 </div>
@@ -649,8 +650,8 @@ data/ntuple_4mu_VV. 100%[===================&gt;]   4.30M  3.35MB/s    in 1.3s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/80787a86a007d4740c319865457eb7dea00c0d5cfaa1b878666c985e34b1214f.png" src="../_images/80787a86a007d4740c319865457eb7dea00c0d5cfaa1b878666c985e34b1214f.png" />
-<img alt="../_images/09da41ffb94cffb97b8285ce8394383d0b22e0573cfb538f73a6e1eb3a99b0bf.png" src="../_images/09da41ffb94cffb97b8285ce8394383d0b22e0573cfb538f73a6e1eb3a99b0bf.png" />
+<img alt="../_images/91821d9d3c231484a029ef7e0be0971d96c9ad75675ec3e8abd95ee68bb28b2e.png" src="../_images/91821d9d3c231484a029ef7e0be0971d96c9ad75675ec3e8abd95ee68bb28b2e.png" />
+<img alt="../_images/f09276abd06484bc7f088991381d0ff20c1b569374d29b71181bee3654c1b3fc.png" src="../_images/f09276abd06484bc7f088991381d0ff20c1b569374d29b71181bee3654c1b3fc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -727,7 +728,22 @@ data/ntuple_4mu_VV. 100%[===================&gt;]   4.30M  3.35MB/s    in 1.3s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3bc07577d620ee89e2a58d19c110844185f42a7e219567bf78b4e6f265f36546.png" src="../_images/3bc07577d620ee89e2a58d19c110844185f42a7e219567bf78b4e6f265f36546.png" />
+<img alt="../_images/08372136a6d1e6ee6c6b54d8c92314d2d944cd4f18761c8899b0c953527705ea.png" src="../_images/08372136a6d1e6ee6c6b54d8c92314d2d944cd4f18761c8899b0c953527705ea.png" />
+</div>
+</div>
+</section>
+<section id="feature-importances">
+<h2>Feature Importances<a class="headerlink" href="#feature-importances" title="Permalink to this heading">#</a></h2>
+<p>A nice feature of xgboost is that you can plot the relative importance of each feature to the BDT decision. Does this plot make sense?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xgb</span><span class="o">.</span><span class="n">plot_importance</span><span class="p">(</span><span class="n">trained_model</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a2f979d8dd43773606f4719c7a12de405d71f63195d50d192a19b1b469e12e68.png" src="../_images/a2f979d8dd43773606f4719c7a12de405d71f63195d50d192a19b1b469e12e68.png" />
 </div>
 </div>
 <p><strong>Question 1:</strong> Can you explain the loss curve?</p>
@@ -746,16 +762,16 @@ data/ntuple_4mu_VV. 100%[===================&gt;]   4.30M  3.35MB/s    in 1.3s
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "machine-learning-das"
         },
         kernelOptions: {
-            name: "python3",
+            name: "machine-learning-das",
             path: "./notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'machine-learning-das'</script>
 
                 </article>
               
@@ -788,6 +804,7 @@ data/ntuple_4mu_VV. 100%[===================&gt;]   4.30M  3.35MB/s    in 1.3s
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-training">Run training</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-performance">Plot performance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-bdt-output-vs-input-variables">Plot BDT output vs input variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importances">Feature Importances</a></li>
 </ul>
   </nav></div>
 
