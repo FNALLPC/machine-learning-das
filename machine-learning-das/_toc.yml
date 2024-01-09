@@ -14,7 +14,7 @@ parts:
     maxdepth: 2
     chapters:
     - file: notebooks/1-datasets-uproot
-    - file: notebooks/2-boosted-decision-trees
+    - file: notebooks/2-boosted-decision-tree
     - file: notebooks/3-dense
       sections:
         - file: notebooks/3.1-dense-keras
