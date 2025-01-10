@@ -24,3 +24,4 @@ parts:
     - file: notebooks/5-gnn-cora
     - file: notebooks/6-vae-mnist
     - file: notebooks/7-gan-mnist
+    - file: notebooks/8-SetTransformer-PointCloud
