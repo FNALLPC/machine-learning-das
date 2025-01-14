@@ -3,19 +3,46 @@
 This is possible, but with a little less user support. You will need to use the following command to open up your ssh connection:
 
 ```bash
-ssh -L localhost:8888:localhost:8888 <username>@cmslpc-sl7.fnal.gov
+ssh -L localhost:8888:localhost:8888 <username>@cmslpc-el9.fnal.gov
 ```
 Replace `<username>` with your LPC username. Then `cd` to the directory of your choice where you will clone the repository as before:
 ```bash
 git clone https://github.com/FNALLPC/machine-learning-das
 ```
 
-In order to open Jupyter with all the appopriate libraries, you will need to have either installed a `conda` environment with Jupyter in your `nobackup` area (where you have more space) or have a CMSSW environment setup. To install and activate a `conda` environment you can do:
+## `venv`
+Firstly, to avoid filling up the quota in your home directory, you can change the location of cache directory used by `pip` by running
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/nobackup/miniconda3.sh
+pip3 config set global.cache-dir ~/nobackup/.cache
+```
+Create and activate a virtual Python virtual environment by running
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+Install the required packages in this virtual environment
+```bash
+cd machine-learning-das
+pip3 install -r requirements.txt
+```
+Open Jupyter
+```bash
+jupyter notebook --no-browser --port=8888 --ip 127.0.0.1
+```
+If everything worked, the last line of the output should be a url of the form:
+```bash
+http://127.0.0.1:8888/?token=<long string of numbers and letters>
+```
+Copy this url into your browser.
+
+## Miniforge
+
+Alternatively, in order to open Jupyter with all the appopriate libraries, you can use a `conda` environment with Jupyter in your `nobackup` area (where you have more space). To install and activate a `conda` environment you can do:
+```bash
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" -O $HOME/nobackup/miniconda3.sh
 bash $HOME/nobackup/miniconda3.sh -b -f -u -p $HOME/nobackup/miniconda3
 source $HOME/nobackup/miniconda3/etc/profile.d/conda.sh
-conda env create -f environment.yml
+conda env create -f environment.ymlx
 conda activate machine-learning-das
 ```
 
