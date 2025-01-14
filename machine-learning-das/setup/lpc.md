@@ -42,7 +42,7 @@ Alternatively, in order to open Jupyter with all the appopriate libraries, you c
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" -O $HOME/nobackup/miniconda3.sh
 bash $HOME/nobackup/miniconda3.sh -b -f -u -p $HOME/nobackup/miniconda3
 source $HOME/nobackup/miniconda3/etc/profile.d/conda.sh
-conda env create -f environment.ymlx
+conda env create -f environment.yml
 conda activate machine-learning-das
 ```
 
