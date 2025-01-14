@@ -445,6 +445,7 @@
   <p><a href="https://colab.research.google.com/github/jngadiub/ML_course_Pavia_23_WIP/blob/main/PartT.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="jet-tagging-with-permutation-invariance">
 <h1><span class="section-number">9. </span>Jet Tagging with Permutation Invariance<a class="headerlink" href="#jet-tagging-with-permutation-invariance" title="Link to this heading">#</a></h1>
+<p>Author: Abhijith Gandrakota, Jennifer Ngadiuba</p>
 <p>In this notebook we will see an implementation of the Transformer architecture for sets applied to the jet tagging task. For <em>sets</em> it is meant here a point cloud, i.e. a set of nodes without edges. We will instead use Multi-Head Attention to learn which nodes (or particles) have strong pair-wise interaction.</p>
 <p>The architecture was introduced by <a class="reference external" href="https://arxiv.org/abs/1810.00825">J. Lee at al. (ICML 2019)</a> –  specifically designed to model interactions among elements in the input set without pre-defined edges. The model consists of an encoder and a decoder, both of which rely on attention mechanisms, as in the original Transformer implementation <a class="reference external" href="https://arxiv.org/abs/1706.03762">by Vaswani</a>. The main difference is that positional encoding is removed plus some other low level adaptions.</p>
 <p>We will use tensorflow for this implementation.</p>
