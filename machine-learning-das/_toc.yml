@@ -19,7 +19,8 @@ parts:
       sections:
         - file: notebooks/3.1-dense-keras
         - file: notebooks/3.2-dense-pytorch
-        - file: notebooks/3.3-dense-bayesian-optimization
+        - file: notebooks/3.3-dense-keras-JetTagging.ipynb
+        - file: notebooks/3.4-dense-bayesian-optimization.ipynb
     - file: notebooks/4-conv2d
     - file: notebooks/5-gnn-cora
     - file: notebooks/6-vae-mnist
