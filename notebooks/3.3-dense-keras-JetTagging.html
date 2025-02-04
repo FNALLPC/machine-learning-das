@@ -469,6 +469,7 @@ based on set of physics-motivated high-level features.</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
@@ -489,9 +490,9 @@ based on set of physics-motivated high-level features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>curl<span class="w"> </span>https://cernbox.cern.ch/s/6Ec5pGFEpFWeH6S/download<span class="w"> </span>-o<span class="w"> </span>Data-MLtutorial.tar.gz
-<span class="o">!</span><span class="w"> </span>tar<span class="w"> </span>-xvzf<span class="w"> </span>Data-MLtutorial.tar.gz<span class="w"> </span>
+<span class="o">!</span><span class="w"> </span>tar<span class="w"> </span>-xvzf<span class="w"> </span>Data-MLtutorial.tar.gz
 <span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>Data-MLtutorial/JetDataset/
-<span class="o">!</span><span class="w"> </span>rm<span class="w"> </span>Data-MLtutorial.tar.gz<span class="w"> </span>
+<span class="o">!</span><span class="w"> </span>rm<span class="w"> </span>Data-MLtutorial.tar.gz
 </pre></div>
 </div>
 </div>
@@ -502,8 +503,8 @@ based on set of physics-motivated high-level features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s open the file</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;Data-MLtutorial/JetDataset/&#39;</span>
-<span class="n">fileIN</span> <span class="o">=</span> <span class="n">data_dir</span><span class="o">+</span><span class="s1">&#39;jetImage_7_100p_30000_40000.h5&#39;</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s2">&quot;Data-MLtutorial/JetDataset/&quot;</span>
+<span class="n">fileIN</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">+</span> <span class="s2">&quot;jetImage_7_100p_30000_40000.h5&quot;</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">fileIN</span><span class="p">)</span>
 <span class="c1"># and see what it contains</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
@@ -525,19 +526,23 @@ based on set of physics-motivated high-level features.</p>
 <span class="n">AllFeatures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 
 <span class="c1"># we cannot load all data on Colab. So we just take a few files</span>
-<span class="n">datafiles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Data-MLtutorial/JetDataset/jetImage_7_100p_30000_40000.h5&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;Data-MLtutorial/JetDataset/jetImage_7_100p_60000_70000.h5&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;Data-MLtutorial/JetDataset/jetImage_7_100p_50000_60000.h5&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;Data-MLtutorial/JetDataset/jetImage_7_100p_10000_20000.h5&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5&#39;</span><span class="p">]</span>
+<span class="n">datafiles</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Data-MLtutorial/JetDataset/jetImage_7_100p_30000_40000.h5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Data-MLtutorial/JetDataset/jetImage_7_100p_60000_70000.h5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Data-MLtutorial/JetDataset/jetImage_7_100p_50000_60000.h5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Data-MLtutorial/JetDataset/jetImage_7_100p_10000_20000.h5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 <span class="c1"># if you are running locallt, you can use the full dataset doing</span>
 <span class="c1"># for fileIN in glob.glob(&quot;tutorials/HiggsSchool/data/*h5&quot;):</span>
 <span class="k">for</span> <span class="n">fileIN</span> <span class="ow">in</span> <span class="n">datafiles</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Appending </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="k">fileIN</span>)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Appending </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">fileIN</span><span class="p">)</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">fileIN</span><span class="p">)</span>
-    <span class="n">myAllFeatures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;jets&quot;</span><span class="p">)[:,</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
-    <span class="n">mytarget</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;jets&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:,</span><span class="o">-</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">AllFeatures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">AllFeatures</span><span class="p">,</span> <span class="n">myAllFeatures</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">AllFeatures</span><span class="o">.</span><span class="n">size</span> <span class="k">else</span> <span class="n">myAllFeatures</span>
+    <span class="n">myAllFeatures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;jets&quot;</span><span class="p">)[:,</span> <span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
+    <span class="n">mytarget</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;jets&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:,</span> <span class="o">-</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">AllFeatures</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">AllFeatures</span><span class="p">,</span> <span class="n">myAllFeatures</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">AllFeatures</span><span class="o">.</span><span class="n">size</span> <span class="k">else</span> <span class="n">myAllFeatures</span>
+    <span class="p">)</span>
     <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">target</span><span class="p">,</span> <span class="n">mytarget</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">size</span> <span class="k">else</span> <span class="n">mytarget</span>
     <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">AllFeatures</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -547,7 +552,7 @@ based on set of physics-motivated high-level features.</p>
 <span class="n">features_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;jetFeatureNames&quot;</span><span class="p">))[</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">features_list</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gluon&#39;</span><span class="p">,</span> <span class="s1">&#39;quark&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;gluon&quot;</span><span class="p">,</span> <span class="s2">&quot;quark&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -565,21 +570,23 @@ Appending Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data exploration</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data exploration</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">AllFeatures</span><span class="p">[</span><span class="n">target</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][:,</span><span class="mi">30</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+        <span class="n">AllFeatures</span><span class="p">[</span><span class="n">target</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][:,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span>
+    <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">features_list</span><span class="p">[</span><span class="mi">30</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of jets&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of jets&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#feature selection</span>
-<span class="n">features</span> <span class="o">=</span> <span class="n">AllFeatures</span><span class="p">[:,[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">48</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># feature selection</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">AllFeatures</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">48</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -590,6 +597,7 @@ Appending Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">del</span> <span class="n">features</span><span class="p">,</span> <span class="n">target</span>
@@ -626,19 +634,19 @@ Appending Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">####</span>
 <span class="n">inputArray</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,))</span>
 <span class="c1">#</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">inputArray</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputArray</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">dropoutRate</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="c1">#</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">20</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Activation</span><span class="p">(</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">dropoutRate</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="c1">#</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">dropoutRate</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="c1">#</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="c1">#</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
 <span class="c1">####</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputArray</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
 </pre></div>
@@ -647,7 +655,7 @@ Appending Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;adam&quot;</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -675,14 +683,19 @@ Appending Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1024</span>
 <span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">50</span>
 
-<span class="c1"># train </span>
-<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-                <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
-                <span class="c1"># callbacks = [</span>
-                <span class="c1"># EarlyStopping(monitor=&#39;val_loss&#39;, patience=10, verbose=1),</span>
-                <span class="c1"># ReduceLROnPlateau(monitor=&#39;val_loss&#39;, factor=0.1, patience=2, verbose=1),</span>
-                <span class="c1"># TerminateOnNaN()]</span>
-                <span class="p">)</span>
+<span class="c1"># train</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">n_epochs</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="c1"># callbacks = [</span>
+    <span class="c1"># EarlyStopping(monitor=&#39;val_loss&#39;, patience=10, verbose=1),</span>
+    <span class="c1"># ReduceLROnPlateau(monitor=&#39;val_loss&#39;, factor=0.1, patience=2, verbose=1),</span>
+    <span class="c1"># TerminateOnNaN()]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -690,13 +703,13 @@ Appending Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot training history</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training History&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;training&#39;</span><span class="p">,</span> <span class="s1">&#39;validation&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;loss&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;val_loss&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Training History&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;training&quot;</span><span class="p">,</span> <span class="s2">&quot;validation&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -709,6 +722,7 @@ Appending Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+
 <span class="n">predict_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">fpr</span> <span class="o">=</span> <span class="p">{}</span>
@@ -717,20 +731,20 @@ Appending Data-MLtutorial/JetDataset/jetImage_7_100p_0_10000.h5
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
-        <span class="n">df</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">df</span><span class="p">[</span><span class="n">label</span> <span class="o">+</span> <span class="s1">&#39;_pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_test</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;_pred&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predict_test</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
 
-        <span class="n">fpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">tpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">label</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="n">label</span><span class="o">+</span><span class="s1">&#39;_pred&#39;</span><span class="p">])</span>
+    <span class="n">fpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">tpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;_pred&quot;</span><span class="p">])</span>
 
-        <span class="n">auc1</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">tpr</span><span class="p">[</span><span class="n">label</span><span class="p">])</span>
+    <span class="n">auc1</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">tpr</span><span class="p">[</span><span class="n">label</span><span class="p">])</span>
 
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span><span class="n">fpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> tagger, auc = </span><span class="si">%.1f%%</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">label</span><span class="p">,</span><span class="n">auc1</span><span class="p">[</span><span class="n">label</span><span class="p">]</span><span class="o">*</span><span class="mf">100.</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">fpr</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> tagger, auc = </span><span class="si">%.1f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">auc1</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;sig. efficiency&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;bkg. mistag rate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.000001</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.000001</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
